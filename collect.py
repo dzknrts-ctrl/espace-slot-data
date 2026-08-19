@@ -23,8 +23,10 @@ from bs4 import BeautifulSoup
 
 BASE = "https://min-repo.com"
 HALLS = {
-    "shinkan": {"name": "エスパス日拓上野新館", "tag": "エスパス日拓上野新館"},
-    "honkan":  {"name": "エスパス日拓上野本館", "tag": "エスパス日拓上野本館"},
+    "shinkan":      {"name": "エスパス日拓上野新館",       "tag": "エスパス日拓上野新館"},
+    "honkan":       {"name": "エスパス日拓上野本館",       "tag": "エスパス日拓上野本館"},
+    "island_akiba": {"name": "アイランド秋葉原店",         "tag": "アイランド秋葉原店"},
+    "espace_akiba": {"name": "エスパス日拓秋葉原駅前店",   "tag": "エスパス日拓秋葉原駅前店"},
 }
 JST = timezone(timedelta(hours=9))
 UA = "Mozilla/5.0 (compatible; personal-slot-analysis/1.0; +non-commercial private use)"
