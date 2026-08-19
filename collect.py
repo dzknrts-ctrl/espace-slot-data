@@ -88,17 +88,26 @@ def build_date_map(hall):
             dm[(m, d)] = pid
     return dm
 
-def list_models(pid):
-    html = get(f"{BASE}/{pid}/?kishu=all")
+def list_models(html):
+    """記事ページのHTMLから機種の kishu= リンクを抽出。
+    末尾別(?kishu=0..9)・ゾロ目(?kishu=z)・全体(?kishu=all)は機種ではないので除外する。"""
     models = []
     for a in BeautifulSoup(html, "html.parser").find_all("a", href=True):
         m = re.search(r"[?&]kishu=([^&]+)", a["href"])
         if not m:
             continue
         name = urllib.parse.unquote(m.group(1))
-        if name and name != "all" and name not in models:
+        if name in ("all", "z") or re.fullmatch(r"[0-9]", name):
+            continue
+        if name and name not in models:
             models.append(name)
     return models
+
+def win_total(html):
+    """ヘッダの「勝率 x/y」の y（=その日の全台数の目安）を取り出す。"""
+    txt = BeautifulSoup(html, "html.parser").get_text(" ")
+    m = re.search(r"勝率\D{0,8}(\d+)\s*/\s*(\d+)", txt)
+    return int(m.group(2)) if m else None
 
 def parse_machines(html):
     soup = BeautifulSoup(html, "html.parser")
@@ -107,8 +116,8 @@ def parse_machines(html):
         if not heads:
             first = table.find("tr")
             heads = [c.get_text(strip=True) for c in first.find_all(["td", "th"])] if first else []
-        if not any("台番" in h for h in heads) or not any("BB" in h for h in heads):
-            continue
+        if not any("台番" in h for h in heads):
+            continue  # 台番号のある表＝per-台番号テーブル（BB列の有無は問わない＝AT機も拾う）
         def idx(*names):
             for i, h in enumerate(heads):
                 if any(n in h for n in names):
@@ -136,15 +145,21 @@ def parse_machines(html):
 
 def collect_one(hall, y, m, d, pid, juggler_only):
     date_str = f"{y:04d}-{m:02d}-{d:02d}"
-    models = list_models(pid)
+    html0 = get(f"{BASE}/{pid}/")            # 記事トップ＝全機種ナビが載るページ
+    models = list_models(html0)
+    total = win_total(html0)                  # 全台数の目安（勝率の分母）
     if juggler_only:
         models = [x for x in models if JUGGLER_RE.search(x)]
-    log(f"[{hall}] {date_str} id={pid} models={len(models)}")
-    rows = []
+    log(f"[{hall}] {date_str} id={pid} models={len(models)} 全台数(勝率分母)={total}")
+    rows, seen = [], set()
     for model in models:
         mh = get(f"{BASE}/{pid}/?kishu={urllib.parse.quote(model)}")
-        for r in parse_machines(mh):
-            if r["G"]:
+        parsed = parse_machines(mh)
+        if not parsed:
+            log(f"    ⚠ {model}: テーブル未検出（要確認）")
+        for r in parsed:
+            if r["G"] and r["daban"] not in seen:
+                seen.add(r["daban"])
                 rows.append({"date": date_str, "hall": hall, "model": model, **r})
     if not rows:
         log(f"[{hall}] {date_str} 0 rows（パーサ要確認）"); return False
@@ -153,7 +168,10 @@ def collect_one(hall, y, m, d, pid, juggler_only):
     with open(path, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["date", "hall", "model", "daban", "G", "BB", "RB", "samai"])
         w.writeheader(); w.writerows(rows)
-    log(f"[{hall}] wrote {len(rows)} rows -> {os.path.relpath(path)}")
+    cov = f"{len(rows)}/{total}" if total else str(len(rows))
+    log(f"[{hall}] wrote {len(rows)} rows (全台 {cov}) -> {os.path.relpath(path)}")
+    if total and not juggler_only and len(rows) < total * 0.95:
+        log(f"    ⚠ 取得{len(rows)} < 全台{total}：未取得あり（要調整）")
     return True
 
 def main():
