@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 """
 出玉データ分析 — エスパス4店(上野新館/本館・アイランド秋葉原・エスパス秋葉原駅前)
-data/*_<hall>.csv(台番別)を集計し、狙い台の絞り込みに使う3種のレポートを出力する。
+
+3つの視点で狙い台の絞り込み材料を出す:
+  A) 機種別サマリ   … data/*_<hall>_kishu.csv(機種別集計)を全日集計。店がどの機種に力を入れているか。
+  B) 台番別クセ     … data/*_<hall>.csv(台番別)を全日集計。特定台番の据え置き/優遇傾向。
+  C) 日付タイプ別   … 曜日/末尾/ゾロ目/旧イベント日 × 機種 の勝率・平均差枚。本命シマ学習。
 
 出力(reports/):
-  model_summary_<hall>.csv   … 機種別サマリ(平均差枚/平均合成/勝率台率/総差枚 等)
-  daban_habits_<hall>.csv    … 台番別クセ(平均差枚/プラス率/据え置きスコア/最新差枚)
-  datetype_<hall>.csv        … 日付タイプ別(曜日/末尾/ゾロ目/イベント日)×機種の平均差枚・勝率
-  summary.md                 … 人が読む総括(店ごとの強機種・注目台番・日付タイプ本命)
-
+  model_summary_<hall>.csv / daban_habits_<hall>.csv / datetype_<hall>.csv
+  summary.md / data.json(ダッシュボード用)
 使い方: python analyze.py
 """
 import csv, os, glob, json, statistics as st
@@ -22,37 +23,46 @@ HALLS = {"shinkan":"エスパス上野新館","honkan":"エスパス上野本館
          "island_akiba":"アイランド秋葉原","espace_akiba":"エスパス秋葉原駅前"}
 # 店舗別 旧イベント日(みんレポ記載)。d=日にち, w=曜日(0=月)
 EVENT = {
-  "shinkan":      lambda d,w: ("4のつく日" if d%10==4 else "")+("7のつく日" if d%10==7 else ""),
-  "honkan":       lambda d,w: ("7のつく日" if d%10==7 else ""),
+  "shinkan":      lambda d,w: "4/7のつく日" if d%10 in (4,7) else "",
+  "honkan":       lambda d,w: "7のつく日"   if d%10==7 else "",
   "island_akiba": lambda d,w: "",
-  "espace_akiba": lambda d,w: ("6のつく日" if d%10==6 else "")+("特定日" if d in (1,11,22,25) else ""),
+  "espace_akiba": lambda d,w: "6のつく日/特定日" if (d%10==6 or d in (1,11,22,25)) else "",
 }
 WD = ["月","火","水","木","金","土","日"]
 
-def to_int(s):
-    try: return int(str(s).replace(",",""));
+def ni(s):
+    try: return int(float(str(s).replace(",","")))
     except: return None
-def to_float(s):
-    try: return float(str(s).replace(",",""));
+def nf(s):
+    try: return float(str(s).replace(",",""))
     except: return None
+def parse_date(s):
+    y,m,d=map(int,s.split("-")); return date(y,m,d)
+def parse_win(s):
+    m=(str(s) or "").split("/")
+    if len(m)==2:
+        try: return int(m[0]), int(m[1])
+        except: return 0,0
+    return 0,0
+def fmt(x, nd=0):
+    if x is None: return "-"
+    return f"{x:,.{nd}f}"
 
-def load_rows(hall):
+def load_daban(hall):
     rows=[]
     for p in sorted(glob.glob(os.path.join(DATA_DIR, f"*_{hall}.csv"))):
         if p.endswith("_kishu.csv"): continue
-        with open(p, encoding="utf-8") as f:
-            for r in csv.DictReader(f):
-                r["_G"]=to_int(r.get("G")); r["_BB"]=to_int(r.get("BB"))
-                r["_RB"]=to_int(r.get("RB")); r["_sa"]=to_int(r.get("samai"))
-                rows.append(r)
+        for r in csv.DictReader(open(p, encoding="utf-8")):
+            r["_G"]=ni(r.get("G")); r["_BB"]=ni(r.get("BB")); r["_RB"]=ni(r.get("RB")); r["_sa"]=ni(r.get("samai"))
+            rows.append(r)
     return rows
 
-def gousei(r):
-    """合成確率 分母 = G/(BB+RB)。BB+RB=0や不明はNone。"""
-    g,b,rb=r["_G"],r["_BB"],r["_RB"]
-    if g is None or b is None or rb is None: return None
-    t=b+rb
-    return round(g/t,1) if t>0 else None
+def load_kishu(hall):
+    rows=[]
+    for p in sorted(glob.glob(os.path.join(DATA_DIR, f"*_{hall}_kishu.csv"))):
+        for r in csv.DictReader(open(p, encoding="utf-8")):
+            rows.append(r)
+    return rows
 
 def load_models(hall):
     p=os.path.join(DATA_DIR,f"models_{hall}.json")
@@ -61,126 +71,137 @@ def load_models(hall):
         except: return {}
     return {}
 
-def model_of(r, mmap):
-    return (r.get("model") or "").strip() or mmap.get(str(r.get("daban")),"") or "(不明)"
-
-def parse_date(s):
-    y,m,d=map(int,s.split("-")); return date(y,m,d)
-
-def fmt(x, nd=0):
-    if x is None: return "-"
-    return f"{x:.{nd}f}" if nd else f"{x:.0f}"
+def dtype_tags(hall, dt):
+    d=parse_date(dt); w=d.weekday()
+    tags=[f"曜:{WD[w]}", f"末尾:{d.day%10}"]
+    if d.day%10==0 or (d.day>=11 and d.day//10==d.day%10): tags.append("ゾロ目/0")
+    ev=EVENT[hall](d.day,w)
+    if ev: tags.append(f"ｲﾍﾞﾝﾄ:{ev}")
+    return tags
 
 def analyze_hall(hall):
-    rows=load_rows(hall); mmap=load_models(hall)
-    if not rows: return None
-    dates=sorted({r["date"] for r in rows})
-    # ---- A) 機種別サマリ ----
-    bym=defaultdict(list)
-    for r in rows:
-        bym[model_of(r,mmap)].append(r)
+    kishu=load_kishu(hall); daban=load_daban(hall); mmap=load_models(hall)
+    dates=sorted({r["date"] for r in daban}) or sorted({r["date"] for r in kishu})
+    if not dates: return None
+
+    # ---- A) 機種別サマリ(kishuベース, 台加重) ----
+    agg=defaultdict(lambda:{"sa_w":0.0,"dai":0,"win_n":0,"win_N":0,"deri":[],"days":set(),"last_dai":0,"last":""})
+    for r in kishu:
+        model=(r.get("model") or "").strip() or "(不明)"
+        dai=ni(r.get("total_dai")) or 0
+        sa=nf(r.get("avg_samai"))
+        wn,wN=parse_win(r.get("win"))
+        a=agg[model]
+        if sa is not None: a["sa_w"]+=sa*dai
+        a["dai"]+=dai; a["win_n"]+=wn; a["win_N"]+=wN
+        de=nf(r.get("deri"));
+        if de: a["deri"].append(de)
+        a["days"].add(r["date"])
+        if r["date"]>=a["last"]: a["last"]=r["date"]; a["last_dai"]=dai
     model_summary=[]
-    for model, rs in bym.items():
-        sa=[r["_sa"] for r in rs if r["_sa"] is not None]
-        gs=[gousei(r) for r in rs]; gs=[x for x in gs if x]
-        ndays=len({r["date"] for r in rs})
-        plus=sum(1 for x in sa if x>0)
+    for model,a in agg.items():
         model_summary.append({
-            "model":model, "延べ台数":len(rs), "設置日数":ndays,
-            "平均差枚": round(st.mean(sa),1) if sa else None,
-            "総差枚": sum(sa) if sa else 0,
-            "プラス率%": round(100*plus/len(sa),1) if sa else None,
-            "平均合成": round(st.mean(gs),1) if gs else None,
-            "最良合成": min(gs) if gs else None,
+            "model":model, "設置台数":a["last_dai"], "延べ台日":a["dai"], "日数":len(a["days"]),
+            "平均差枚": round(a["sa_w"]/a["dai"],1) if a["dai"] else None,
+            "勝率%": round(100*a["win_n"]/a["win_N"],1) if a["win_N"] else None,
+            "勝": a["win_n"], "全": a["win_N"],
+            "平均出率": round(st.mean(a["deri"]),1) if a["deri"] else None,
         })
     model_summary.sort(key=lambda x:(x["平均差枚"] is not None, x["平均差枚"] or -9e9), reverse=True)
 
-    # ---- B) 台番別クセ ----
+    # ---- B) 台番別クセ(dabanベース) ----
     byd=defaultdict(list)
-    for r in rows:
-        byd[str(r.get("daban"))].append(r)
-    daban_habits=[]
-    latest=dates[-1]
-    for dab, rs in byd.items():
+    for r in daban: byd[str(r.get("daban"))].append(r)
+    latest=dates[-1]; daban_habits=[]
+    for dab,rs in byd.items():
         rs=sorted(rs,key=lambda r:r["date"])
         sa=[r["_sa"] for r in rs if r["_sa"] is not None]
-        gs=[gousei(r) for r in rs]; gs=[x for x in gs if x]
+        if not sa: continue
         plus=sum(1 for x in sa if x>0)
-        n=len(sa)
         last=next((r for r in reversed(rs) if r["date"]==latest), None)
-        # 据え置き/クセ スコア: プラス率 と 平均差枚 を正規化した簡易指標
-        score = (round(100*plus/n,1) if n else 0)/100.0 * 0.5 + (min(1.0,(st.mean(sa)/2000)) if sa else 0)*0.5
-        daban_habits.append({
-            "daban":dab, "model":model_of(rs[-1],mmap),
-            "回数":n, "平均差枚":round(st.mean(sa),1) if sa else None,
-            "プラス率%":round(100*plus/n,1) if n else None,
-            "最大差枚":max(sa) if sa else None, "平均合成":round(st.mean(gs),1) if gs else None,
-            "最新差枚": last["_sa"] if last else None,
-            "スコア":round(score,3),
-        })
+        model=next((r.get("model") for r in reversed(rs) if (r.get("model") or "").strip()), "") or mmap.get(dab,"")
+        pr=100*plus/len(sa)
+        score=round(pr/100*0.5 + min(1.0,max(0,st.mean(sa)/2000))*0.5, 3)
+        daban_habits.append({"daban":dab,"model":model,"日数":len(sa),
+            "平均差枚":round(st.mean(sa),1),"プラス率%":round(pr,1),
+            "最大差枚":max(sa),"最新差枚":last["_sa"] if last else None,"スコア":score})
     daban_habits.sort(key=lambda x:x["スコア"], reverse=True)
 
-    # ---- C) 日付タイプ別 ----
-    # 日ごとの店全体差枚合計 と 機種別
-    day_hall=defaultdict(int); day_cnt=defaultdict(int)
-    dt_model=defaultdict(lambda: defaultdict(list))  # dtype -> model -> [samai]
-    def dtypes(dt):
-        d=parse_date(dt); w=d.weekday(); tags=[f"曜:{WD[w]}", f"末尾:{d.day%10}"]
-        if d.day%10==0 or (d.day//10==d.day%10): tags.append("ゾロ目/0")
-        ev=EVENT[hall](d.day,w)
-        if ev: tags.append(f"ｲﾍﾞﾝﾄ:{ev}")
-        return tags
-    for r in rows:
-        if r["_sa"] is None: continue
-        day_hall[r["date"]]+=r["_sa"]; day_cnt[r["date"]]+=1
-        for t in dtypes(r["date"]):
-            dt_model[t][model_of(r,mmap)].append(r["_sa"])
+    # ---- C) 日付タイプ別(kishuベース: 勝率と平均差枚) ----
+    dt=defaultdict(lambda:defaultdict(lambda:{"sa_w":0.0,"dai":0,"win_n":0,"win_N":0}))
+    dt_hall=defaultdict(lambda:{"sa_w":0.0,"dai":0,"days":set()})
+    for r in kishu:
+        model=(r.get("model") or "").strip() or "(不明)"
+        dai=ni(r.get("total_dai")) or 0; sa=nf(r.get("avg_samai")); wn,wN=parse_win(r.get("win"))
+        for t in dtype_tags(hall, r["date"]):
+            c=dt[t][model]
+            if sa is not None: c["sa_w"]+=sa*dai
+            c["dai"]+=dai; c["win_n"]+=wn; c["win_N"]+=wN
+            h=dt_hall[t]; h["sa_w"]+= (sa*dai if sa is not None else 0); h["dai"]+=dai; h["days"].add(r["date"])
     datetype=[]
-    for t, mm in dt_model.items():
-        for model, sa in mm.items():
-            if len(sa)<3: continue
-            plus=sum(1 for x in sa if x>0)
-            datetype.append({"日付タイプ":t,"model":model,"延べ台":len(sa),
-                             "平均差枚":round(st.mean(sa),1),"プラス率%":round(100*plus/len(sa),1)})
-    datetype.sort(key=lambda x:(x["日付タイプ"], -x["平均差枚"]))
+    for t,mm in dt.items():
+        for model,c in mm.items():
+            if c["win_N"]<8: continue
+            datetype.append({"日付タイプ":t,"model":model,"延べ台日":c["dai"],
+                "平均差枚":round(c["sa_w"]/c["dai"],1) if c["dai"] else None,
+                "勝率%":round(100*c["win_n"]/c["win_N"],1) if c["win_N"] else None})
+    datetype.sort(key=lambda x:(x["日付タイプ"], -(x["勝率%"] or 0)))
+    datetype_hall=[{"日付タイプ":t,"日数":len(v["days"]),
+                    "平均差枚":round(v["sa_w"]/v["dai"],1) if v["dai"] else None} for t,v in dt_hall.items()]
+    datetype_hall.sort(key=lambda x:-(x["平均差枚"] or -9e9))
 
+    # 日別の店全体差枚
+    day_total=defaultdict(int)
+    for r in daban:
+        if r["_sa"] is not None: day_total[r["date"]]+=r["_sa"]
     return {"dates":dates,"model_summary":model_summary,"daban_habits":daban_habits,
-            "datetype":datetype,"day_hall":day_hall,"day_cnt":day_cnt}
+            "datetype":datetype,"datetype_hall":datetype_hall,
+            "day_total":dict(sorted(day_total.items()))}
 
 def write_csv(path, rows, fields):
     with open(path,"w",encoding="utf-8-sig",newline="") as f:
-        w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(rows)
+        w=csv.DictWriter(f,fieldnames=fields,extrasaction="ignore"); w.writeheader(); w.writerows(rows)
 
 def main():
     os.makedirs(REP_DIR,exist_ok=True)
-    md=["# エスパス4店 出玉分析サマリ", ""]
+    md=["# エスパス4店 出玉分析サマリ",""]
+    dash={"halls":{}, "hall_names":HALLS}
     for hall,jp in HALLS.items():
         res=analyze_hall(hall)
         if not res:
             md.append(f"## {jp}\nデータなし\n"); continue
         ds=res["dates"]
         write_csv(os.path.join(REP_DIR,f"model_summary_{hall}.csv"), res["model_summary"],
-                  ["model","延べ台数","設置日数","平均差枚","総差枚","プラス率%","平均合成","最良合成"])
+                  ["model","設置台数","延べ台日","日数","平均差枚","勝率%","勝","全","平均出率"])
         write_csv(os.path.join(REP_DIR,f"daban_habits_{hall}.csv"), res["daban_habits"],
-                  ["daban","model","回数","平均差枚","プラス率%","最大差枚","平均合成","最新差枚","スコア"])
+                  ["daban","model","日数","平均差枚","プラス率%","最大差枚","最新差枚","スコア"])
         write_csv(os.path.join(REP_DIR,f"datetype_{hall}.csv"), res["datetype"],
-                  ["日付タイプ","model","延べ台","平均差枚","プラス率%"])
-        # markdown 総括
-        md.append(f"## {jp}  ({ds[0]}〜{ds[-1]}, {len(ds)}日)")
-        md.append("")
-        md.append("**強い機種 TOP5(平均差枚)**")
-        md.append("| 機種 | 平均差枚 | プラス率 | 平均合成 | 延べ台 |")
+                  ["日付タイプ","model","延べ台日","平均差枚","勝率%"])
+        dash["halls"][hall]=res
+        md.append(f"## {jp}  ({ds[0]}〜{ds[-1]}, {len(ds)}日)\n")
+        md.append("**力の入る機種 TOP8（平均差枚・台加重）**\n")
+        md.append("| 機種 | 平均差枚 | 勝率 | 設置 | 平均出率 |")
         md.append("|---|--:|--:|--:|--:|")
-        for m in res["model_summary"][:5]:
-            md.append(f"| {m['model']} | {fmt(m['平均差枚'],1)} | {fmt(m['プラス率%'],1)}% | {fmt(m['平均合成'],1)} | {m['延べ台数']} |")
-        md.append("")
-        md.append("**注目台番 TOP5(クセ・据え置きスコア)**")
-        md.append("| 台番 | 機種 | 平均差枚 | プラス率 | 最新差枚 |")
+        for m in res["model_summary"][:8]:
+            md.append(f"| {m['model']} | {fmt(m['平均差枚'],0)} | {fmt(m['勝率%'],0)}% | {m['設置台数']} | {fmt(m['平均出率'],1)}% |")
+        md.append("\n**注目台番 TOP8（据え置き/クセ）**\n")
+        md.append("| 台番 | 機種 | 平均差枚 | プラス率 | 最新 |")
         md.append("|---|---|--:|--:|--:|")
-        for x in res["daban_habits"][:5]:
-            md.append(f"| {x['daban']} | {x['model']} | {fmt(x['平均差枚'],1)} | {fmt(x['プラス率%'],1)}% | {fmt(x['最新差枚'])} |")
+        for x in res["daban_habits"][:8]:
+            md.append(f"| {x['daban']} | {x['model'] or '-'} | {fmt(x['平均差枚'],0)} | {fmt(x['プラス率%'],0)}% | {fmt(x['最新差枚'],0)} |")
+        md.append("\n**日付タイプ別 店全体の出やすさ（平均差枚/台）**\n")
+        md.append("| 日付タイプ | 平均差枚 | 日数 |")
+        md.append("|---|--:|--:|")
+        for x in res["datetype_hall"][:6]:
+            md.append(f"| {x['日付タイプ']} | {fmt(x['平均差枚'],0)} | {x['日数']} |")
         md.append("")
     open(os.path.join(REP_DIR,"summary.md"),"w",encoding="utf-8").write("\n".join(md))
+    # ダッシュボード用JSON(sets除去)
+    def clean(o):
+        if isinstance(o,dict): return {k:clean(v) for k,v in o.items() if not isinstance(v,set)}
+        if isinstance(o,list): return [clean(x) for x in o]
+        return o
+    json.dump(clean(dash), open(os.path.join(REP_DIR,"data.json"),"w",encoding="utf-8"), ensure_ascii=False)
     print("wrote reports to", REP_DIR)
     print("\n".join(md))
 
