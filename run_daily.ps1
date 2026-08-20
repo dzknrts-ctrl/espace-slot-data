@@ -12,8 +12,9 @@ $env:PYTHONIOENCODING = "utf-8"
 # 1) 収集（直近5日で未取得を補完）
 & $py (Join-Path $repo "collect.py") --days 5 2>&1 | Tee-Object -FilePath $log -Append
 
-# 2) 分析レポート更新
+# 2) 分析レポート＆ダッシュボード更新
 & $py (Join-Path $repo "analyze.py") 2>&1 | Tee-Object -FilePath $log -Append
+& $py (Join-Path $repo "build_dashboard.py") 2>&1 | Tee-Object -FilePath $log -Append
 
 # 3) 変更があれば commit & push
 Set-Location $repo
