@@ -1,0 +1,29 @@
+# エスパス4店 日次収集→分析→push（Windowsタスクスケジューラから毎朝実行）
+# 家庭用IPで実ブラウザ(Playwright)収集するため、みんレポの反スクレイピング対策を突破できる。
+# PCが起動していれば実行。休止していた日も collect.py の --days が未取得日を自動で埋める。
+$ErrorActionPreference = "Continue"
+$repo = $PSScriptRoot
+$py   = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
+$log  = Join-Path $repo "run_daily.log"
+$env:PYTHONIOENCODING = "utf-8"
+
+"==== $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') 収集開始 ====" | Tee-Object -FilePath $log -Append
+
+# 1) 収集（直近5日で未取得を補完）
+& $py (Join-Path $repo "collect.py") --days 5 2>&1 | Tee-Object -FilePath $log -Append
+
+# 2) 分析レポート更新
+& $py (Join-Path $repo "analyze.py") 2>&1 | Tee-Object -FilePath $log -Append
+
+# 3) 変更があれば commit & push
+Set-Location $repo
+$changed = git status --porcelain data reports
+if ($changed) {
+    git add data reports
+    git commit -m "auto: $(Get-Date -Format 'yyyy-MM-dd') collect+analyze" | Tee-Object -FilePath $log -Append
+    git push | Tee-Object -FilePath $log -Append
+    "pushed." | Tee-Object -FilePath $log -Append
+} else {
+    "no changes." | Tee-Object -FilePath $log -Append
+}
+"==== $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') 完了 ====" | Tee-Object -FilePath $log -Append

@@ -1,43 +1,62 @@
-# エスパス上野 スロット日次収集（Phase 1）
+# エスパス4店 スロット出玉 収集＆分析
 
-みんレポからエスパス日拓上野 新館・本館の**台番号別データ（G/BB/RB/差枚）**を毎日1回自動取得し、`data/日付_館.csv` に蓄積します。GitHub Actions で完全自動（人力ゼロ）。
+エスパス日拓上野（新館・本館）＋アイランド秋葉原＋エスパス日拓秋葉原駅前 の**全台データ（台番別 差枚/G/BB/RB/合成/出率）**を毎日みんレポから取得して `data/` に蓄積し、`analyze.py` で狙い台の絞り込みに使うレポートを生成する。
 
-## 仕組み
-- 毎朝 **07:10 JST** に前日分を収集（`.github/workflows/daily.yml`）。手動実行（日付指定）も可。
-- 各投稿ページで**日付・館名を実際に確認**してから取り込み（前年データ混入を防止）。
-- 1リクエストごとに2.5秒待機・UA明示・単発アクセス（サイト負荷に配慮）。
-- 出力: `data/2026-08-15_shinkan.csv` … `date,hall,model,daban,G,BB,RB,samai`
+## 対象4店
 
-## セットアップ（初回のみ・あなたの作業）
-1. GitHub にログイン → 新しい**プライベート**リポジトリを作成（例: `espace-slot-data`）。
-2. このフォルダ（`juggler-collector` の中身）をそのリポジトリに置いて push。
-   ```bash
-   cd juggler-collector
-   git init
-   git add .
-   git commit -m "init: daily collector"
-   git branch -M main
-   git remote add origin https://github.com/<あなた>/espace-slot-data.git
-   git push -u origin main
-   ```
-3. リポジトリの **Settings → Actions → General → Workflow permissions** を
-   **Read and write permissions** に設定（data/ の自動コミットに必要）。
-4. **Actions** タブ → `daily-collect` → **Run workflow**（date空欄）で手動テスト実行。
-   - 成功すると `data/` に前日分の CSV が2つ（新館・本館）追加され自動コミットされます。
-   - ログに `probe … / wrote N rows` が出ます。0行や未検出なら連絡ください（セレクタ調整します）。
+| key | 店名 | 全台数目安 |
+|---|---|---|
+| `shinkan` | エスパス日拓上野新館 | 約377 |
+| `honkan` | エスパス日拓上野本館 | 約375 |
+| `island_akiba` | アイランド秋葉原店 | 約395 |
+| `espace_akiba` | エスパス日拓秋葉原駅前店 | 約522 |
 
-## 手元での試し実行（任意・Pythonがある環境）
-```bash
-pip install requests beautifulsoup4
-python collect.py --date 8/15 --juggler-only   # 指定日・ジャグラーのみ
-python collect.py                               # 前日・全スロット
+## 収集方式（重要）
+
+みんレポは **2026-08頃に反スクレイピング対策**を導入した：
+1. **JSロールCookie `_d2`** … 記事/データページは初回、本文の代わりに `_d2` を発行して自分をリロードするだけの小さなシェルを返す。`_d2` は毎回変わり、正しくないと台番データを返さない。→ 単純な `requests` では突破不可。
+2. **累積レート制限** … 重いデータページを短時間に多数取得すると空応答を返し、IP単位でクールダウン。
+
+そのため収集は **実ブラウザ（Playwright / Chromium）** で行う。ブラウザがJSを実行して `_d2` を自動処理し、人間ペースで巡回することでレート制限も回避する。1記事あたり base + 末尾別0〜9 の**12ページ**で全台を取得（勝率の分母＝全台数と一致するのを実測確認済み）。
+
+- 日付→記事IDは**タグ一覧ページのタイトル `M/D(曜)` から直接マッピング**（記事を1件ずつ開かない）。
+- 台番→機種は `data/models_<hall>.json`（`--build-models` で最新記事から生成）を流用。無い台は機種空欄でもデータは完全。
+
+### なぜ GitHub Actions ではなくローカルか
+クラウドの共有データセンターIPはブロック/throttleされやすい。**日次の主エンジンはユーザーPCのタスクスケジューラ**（`run_daily.ps1`, 家庭用IP）とする。GitHub Actions（`.github/workflows/daily.yml`）はPlaywright対応済みだが**手動バックアップ**扱い。
+
+## ファイル
+- `collect.py` … 収集本体（Playwright）
+- `analyze.py` … 分析レポート生成
+- `run_daily.ps1` … 毎日 収集→分析→push を実行（タスクスケジューラ用）
+- `data/` … `YYYY-MM-DD_<hall>.csv`（台番別）, `..._kishu.csv`（機種別集計）, `models_<hall>.json`
+- `reports/` … `model_summary_*` / `daban_habits_*` / `datetype_*` / `summary.md`
+
+## データ形式 `data/YYYY-MM-DD_<hall>.csv`
+```
+date,hall,model,daban,G,BB,RB,samai,deri,gousei,bb_bunbo,rb_bunbo
+```
+`samai`=差枚, `deri`=出率%, `gousei`=合成確率の分母(1/x の x), `bb_bunbo`/`rb_bunbo`=BB率/RB率の分母。
+
+## セットアップ（初回のみ）
+```powershell
+# Python 3.12 と依存
+pip install playwright
+python -m playwright install chromium
 ```
 
-## 注意 / 規約
-- 収集対象は自動取得を禁じていないみんレポのみ。**個人・非公開利用**を前提に、低頻度・単発でアクセスします。
-- データは参考情報。設定・勝敗を保証するものではありません。
-- 規約は変わり得るため、定期的に再確認してください。
+## 使い方
+```powershell
+python collect.py                 # 直近5日で未取得を収集（全4店）
+python collect.py --days 20       # 直近20日をバックフィル
+python collect.py --date 8/20     # 指定日だけ
+python collect.py --hall shinkan  # 店舗限定
+python collect.py --build-models  # 台番→機種マップを最新記事から生成/更新
+python analyze.py                 # レポート生成（reports/）
+```
 
-## 次フェーズ（予定）
-- **Phase 2**: 日付タイプ別（曜日・末尾・0/7/ゾロ目）の本命シマ学習 → 任意の日の狙い台。
-- **Phase 3**: 当日リアルタイム判定（日中に複数回取得する別スケジュール）。
+## 毎日の自動化（タスクスケジューラ）
+`run_daily.ps1` を毎朝実行するタスクを登録すると、収集→分析→push まで自動。PCが休止していた日も `--days 5` が未取得日を次回自動で補完する。
+
+## 注意 / 規約
+個人・非公開利用前提。低頻度・人間ペースでアクセスする。データは独自調査値であり実数とは異なり得る参考情報。設定・勝敗を保証しない。規約は変わり得るため定期的に再確認する。

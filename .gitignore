@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+# 実行ログ・作業ファイル
+run.log
+run_daily.log
+_run_*.log
+*.tmp
