@@ -50,13 +50,13 @@ jobs:
           python build_dashboard.py || true
           TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
           python shima.py "$TODAY" || true
-          python pick_today.py "$TODAY" || true
+          python track.py daily "$TODAY" || true
       - name: Commit
         run: |
           git config user.name  "collector-bot"
           git config user.email "actions@users.noreply.github.com"
-          if [ -n "$(git status --porcelain data reports)" ]; then
-            git add data reports
+          if [ -n "$(git status --porcelain data reports predictions)" ]; then
+            git add data reports predictions
             git commit -m "auto: $(date -u +%Y-%m-%d) collect+analyze"
             git push
           else
