@@ -1,10 +1,11 @@
 name: daily-collect
 
-# みんレポは2026-08に反スクレイピング対策(JSロールCookie＋レート制限)を導入したため、
-# 収集は実ブラウザ(Playwright)で行う。クラウド(GitHub)の共有IPはブロック/throttleされ得るので、
-# 日次の主エンジンはユーザーPCのタスクスケジューラ(run_daily.ps1, 家庭用IP)とする。
-# このワークフローは手動(workflow_dispatch)のバックアップ用。日付指定も可。
+# 実ブラウザ(Playwright)でみんレポの反スクレイピング対策(_d2ロールCookie)を突破して収集する。
+# クラウド常設: 毎日 02:00 UTC(=11:00 JST)に前日分までを収集→分析→ダッシュボード更新→自動commit。
+# push(コード変更時)でも起動して検証可能。手動(workflow_dispatch)で日付/日数指定も可。
 on:
+  schedule:
+    - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       days:
@@ -15,6 +16,12 @@ on:
         description: "収集する日 M/D(当年)。指定時はその日だけ"
         required: false
         default: ""
+  push:
+    paths:
+      - "collect.py"
+      - "analyze.py"
+      - "build_dashboard.py"
+      - ".github/workflows/daily.yml"
 
 permissions:
   contents: write
@@ -43,15 +50,17 @@ jobs:
           else
             python collect.py --days "${{ github.event.inputs.days || '5' }}"
           fi
-      - name: Analyze
-        run: python analyze.py || true
+      - name: Analyze & dashboard
+        run: |
+          python analyze.py || true
+          python build_dashboard.py || true
       - name: Commit
         run: |
           git config user.name  "collector-bot"
           git config user.email "actions@users.noreply.github.com"
           if [ -n "$(git status --porcelain data reports)" ]; then
             git add data reports
-            git commit -m "data: $(date -u +%Y-%m-%d) collect"
+            git commit -m "auto: $(date -u +%Y-%m-%d) collect+analyze"
             git push
           else
             echo "no new data"
