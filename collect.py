@@ -270,6 +270,7 @@ def main():
 
     LAUNCH_ARGS = ["--disable-dev-shm-usage", "--disable-gpu"]
     wrote_any = False
+    had_need = False        # 収集すべき未取得日が1つでもあったか
     with sync_playwright() as p:
         def fresh_browser():
             b = p.chromium.launch(headless=True, args=LAUNCH_ARGS)
@@ -281,6 +282,7 @@ def main():
                     if a.force or not os.path.exists(os.path.join(DATA_DIR, f"{y:04d}-{m:02d}-{d:02d}_{hall}.csv"))]
             if not need and not a.build_models:
                 log(f"[{hall}] 対象日はすべて取得済み、スキップ"); continue
+            if need: had_need = True
 
             # 店舗ごとにブラウザを新規起動(メモリ蓄積によるクラッシュ回避)
             browser, ctx, page = fresh_browser()
@@ -323,10 +325,9 @@ def main():
             finally:
                 try: browser.close()
                 except Exception: pass
-    sys.exit(0 if wrote_any else 1)
+    # 収集できた／もともと未取得日が無かった なら成功。未取得日があったのに取れなかった時だけ失敗。
+    sys.exit(0 if (wrote_any or not had_need) else 1)
 
 
 if __name__ == "__main__":
     main()
-
-# ci-test: cloud collection validation trigger 20260821T030839Z

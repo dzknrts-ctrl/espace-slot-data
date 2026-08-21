@@ -22,8 +22,9 @@
 - 日付→記事IDは**タグ一覧ページのタイトル `M/D(曜)` から直接マッピング**（記事を1件ずつ開かない）。
 - 台番→機種は `data/models_<hall>.json`（`--build-models` で最新記事から生成）を流用。無い台は機種空欄でもデータは完全。
 
-### なぜ GitHub Actions ではなくローカルか
-クラウドの共有データセンターIPはブロック/throttleされやすい。**日次の主エンジンはユーザーPCのタスクスケジューラ**（`run_daily.ps1`, 家庭用IP）とする。GitHub Actions（`.github/workflows/daily.yml`）はPlaywright対応済みだが**手動バックアップ**扱い。
+### 日次自動化＝GitHub Actions（クラウド・PC不要）
+**主エンジンは GitHub Actions**（`.github/workflows/daily.yml`）。毎日 02:00 UTC(=11:00 JST) に Playwright で収集→分析→ダッシュボード更新→自動commit する。2026-08-21にクラウドIPでの収集成功を実測確認済み（データセンターIPはブロックされなかった）。PCの電源状態に関係なく動く。
+`run_daily.ps1`（タスクスケジューラ用）は同処理をローカルで回すための任意のバックアップ。
 
 ## ファイル
 - `collect.py` … 収集本体（Playwright）

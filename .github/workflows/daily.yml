@@ -2,7 +2,7 @@ name: daily-collect
 
 # 実ブラウザ(Playwright)でみんレポの反スクレイピング対策(_d2ロールCookie)を突破して収集する。
 # クラウド常設: 毎日 02:00 UTC(=11:00 JST)に前日分までを収集→分析→ダッシュボード更新→自動commit。
-# push(コード変更時)でも起動して検証可能。手動(workflow_dispatch)で日付/日数指定も可。
+# 手動(workflow_dispatch)で日付/日数指定も可。クラウド収集は2026-08-21に実測で成功を確認済み。
 on:
   schedule:
     - cron: "0 2 * * *"
@@ -16,12 +16,6 @@ on:
         description: "収集する日 M/D(当年)。指定時はその日だけ"
         required: false
         default: ""
-  push:
-    paths:
-      - "collect.py"
-      - "analyze.py"
-      - "build_dashboard.py"
-      - ".github/workflows/daily.yml"
 
 permissions:
   contents: write
