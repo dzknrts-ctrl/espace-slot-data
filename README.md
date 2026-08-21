@@ -28,10 +28,23 @@
 
 ## ファイル
 - `collect.py` … 収集本体（Playwright）
-- `analyze.py` … 分析レポート生成
-- `run_daily.ps1` … 毎日 収集→分析→push を実行（タスクスケジューラ用）
+- `analyze.py` / `shima.py` … 機種別サマリ・台番クセ・日付タイプ / 島単位(全ツッパ/看板島/狙い島)分析
+- `track.py` … 予測→答え合わせループ（狙いを記録→翌日採点→的中率/エッジ→`daily_report.md`）
+- `harvest_x.py` … 店X(取材/全台/機種/イベント)をPlaywrightで収集→`hints/`（APIキー不要）
+- `hints_vision.py` … 示唆画像/メール画像をClaude画像認識で構造化（要 `ANTHROPIC_API_KEY`）
+- `email_harvester.gs` … Gmailの店メルマガ→`inbox/`（Google Apps Script）
+- `concentration.py` … 島型/単体型の店別・曜日別傾向
+- `run_daily.ps1` … ローカルで一括実行（任意のバックアップ）
 - `data/` … `YYYY-MM-DD_<hall>.csv`（台番別）, `..._kishu.csv`（機種別集計）, `models_<hall>.json`
-- `reports/` … `model_summary_*` / `daban_habits_*` / `datetype_*` / `summary.md`
+- `reports/` … `daily_report.md`(狙い＋答え合わせ), `track_record.csv`(累積成績), `dashboard.html`, 各種CSV
+- `hints/` … 先読み示唆（X/画像/メール由来。`<date>_<hall>.json`）／`predictions/` … 日々の狙い記録
+
+## 先読み層（示唆）
+出玉データに加え、店の先読み情報を `hints/` に集約して狙いに反映する。
+- **X(Twitter)**: `harvest_x.py` が店アカウントをPlaywrightで読取り→取材/全台/機種/イベントを抽出（本館 @ueno_honkan0821 / 新館 @espace_ueno_iyo。秋葉原handleは追記可）。
+- **示唆画像/メール画像**: `hints_vision.py`（Claude画像認識）で文字化。婉曲な機種示唆はここで拾う。
+- **メール**: `email_harvester.gs` でGmail→`inbox/`。
+- 反映: `track.py daily` が `hints/<today>_<hall>.json` を読み、日次レポートに「📢示唆(取材/全台/強調機種)」として反映。効く示唆だけをデータで検証(誕生日/公約は過去実績で裏取り済み=店により有無が異なる)。
 
 ## データ形式 `data/YYYY-MM-DD_<hall>.csv`
 ```

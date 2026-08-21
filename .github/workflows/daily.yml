@@ -44,6 +44,10 @@ jobs:
           else
             python collect.py --days "${{ github.event.inputs.days || '5' }}"
           fi
+      - name: Harvest X hints (best-effort)
+        run: |
+          TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          python harvest_x.py "$TODAY" || true
       - name: Analyze & dashboard
         run: |
           python analyze.py || true
@@ -55,8 +59,8 @@ jobs:
         run: |
           git config user.name  "collector-bot"
           git config user.email "actions@users.noreply.github.com"
-          if [ -n "$(git status --porcelain data reports predictions)" ]; then
-            git add data reports predictions
+          if [ -n "$(git status --porcelain data reports predictions hints)" ]; then
+            git add data reports predictions hints
             git commit -m "auto: $(date -u +%Y-%m-%d) collect+analyze"
             git push
           else

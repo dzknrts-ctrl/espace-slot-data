@@ -12,6 +12,9 @@ $env:PYTHONIOENCODING = "utf-8"
 # 1) 収集（直近5日で未取得を補完）
 & $py (Join-Path $repo "collect.py") --days 5 2>&1 | Tee-Object -FilePath $log -Append
 
+# 1.5) 店X先読みを収集(取材/全台/機種/イベント)
+& $py (Join-Path $repo "harvest_x.py") ((Get-Date).ToString("yyyy-MM-dd")) 2>&1 | Tee-Object -FilePath $log -Append
+
 # 2) 分析レポート＆ダッシュボード更新
 & $py (Join-Path $repo "analyze.py") 2>&1 | Tee-Object -FilePath $log -Append
 & $py (Join-Path $repo "build_dashboard.py") 2>&1 | Tee-Object -FilePath $log -Append
@@ -22,9 +25,9 @@ $today = (Get-Date).ToString("yyyy-MM-dd")   # 当日の狙い島・狙い台
 
 # 3) 変更があれば commit & push
 Set-Location $repo
-$changed = git status --porcelain data reports
+$changed = git status --porcelain data reports predictions hints
 if ($changed) {
-    git add data reports
+    git add data reports predictions hints
     git commit -m "auto: $(Get-Date -Format 'yyyy-MM-dd') collect+analyze" | Tee-Object -FilePath $log -Append
     git push | Tee-Object -FilePath $log -Append
     "pushed." | Tee-Object -FilePath $log -Append
