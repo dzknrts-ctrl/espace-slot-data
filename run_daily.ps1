@@ -15,6 +15,9 @@ $env:PYTHONIOENCODING = "utf-8"
 # 2) 分析レポート＆ダッシュボード更新
 & $py (Join-Path $repo "analyze.py") 2>&1 | Tee-Object -FilePath $log -Append
 & $py (Join-Path $repo "build_dashboard.py") 2>&1 | Tee-Object -FilePath $log -Append
+$today = (Get-Date).ToString("yyyy-MM-dd")   # 当日の狙い島・狙い台
+& $py (Join-Path $repo "shima.py") $today 2>&1 | Tee-Object -FilePath $log -Append
+& $py (Join-Path $repo "pick_today.py") $today 2>&1 | Tee-Object -FilePath $log -Append
 
 # 3) 変更があれば commit & push
 Set-Location $repo

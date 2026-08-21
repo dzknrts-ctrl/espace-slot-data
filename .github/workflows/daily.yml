@@ -48,6 +48,9 @@ jobs:
         run: |
           python analyze.py || true
           python build_dashboard.py || true
+          TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          python shima.py "$TODAY" || true
+          python pick_today.py "$TODAY" || true
       - name: Commit
         run: |
           git config user.name  "collector-bot"
