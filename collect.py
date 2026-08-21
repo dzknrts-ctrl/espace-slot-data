@@ -328,3 +328,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ci-test: cloud collection validation trigger 20260821T030839Z
