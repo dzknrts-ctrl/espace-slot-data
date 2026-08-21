@@ -12,6 +12,14 @@ from datetime import date
 
 BASE=os.path.dirname(os.path.abspath(__file__))
 DATA=os.path.join(BASE,"data"); REP=os.path.join(BASE,"reports"); PRED=os.path.join(BASE,"predictions")
+HINTS=os.path.join(BASE,"hints")
+
+def load_hint(hall, date):
+    p=os.path.join(HINTS,f"{date}_{hall}.json")
+    if os.path.exists(p):
+        try: return json.load(open(p,encoding="utf-8"))
+        except: return None
+    return None
 HALLS={"shinkan":"エスパス上野新館","honkan":"エスパス上野本館",
        "island_akiba":"アイランド秋葉原","espace_akiba":"エスパス秋葉原駅前"}
 WD=["月","火","水","木","金","土","日"]
@@ -249,7 +257,19 @@ def build_daily(today):
     md.append(f"## 🎯 今日({today})の狙い")
     for hall,jp in HALLS.items():
         p=pred["picks"][hall]
+        h=load_hint(hall,today)
         md.append(f"\n### {jp}")
+        # 📢 示唆(画像/メール由来)を最優先で反映
+        if h:
+            tags=[]
+            if h.get("torizai"): tags.append("🎪取材イベント日")
+            if h.get("event"): tags.append(h["event"])
+            if (h.get("strength")=="strong"): tags.append("【強】")
+            if tags: md.append("📢 **示唆**： "+" ／ ".join(tags))
+            hk=[k for k in (h.get("kishu") or []) if k]
+            if hk: md.append("　示唆機種(全台/強調)： "+"・".join(hk)+" ← 最優先チェック")
+            if h.get("tanjoubi"): md.append("　誕生日連動: "+"・".join(h["tanjoubi"]))
+            if h.get("raw"): md.append(f"　<sub>{h['raw']}</sub>")
         md.append("**狙い島**： "+(" ／ ".join(f"**{s['model']}**({s['台数']}台・{s['理由']})" for s in p["shima"]) or "—"))
         md.append("**狙い台**： "+(" ／ ".join(f"{s['daban']}{'('+s['model']+')' if s['model'] else ''}[プラス率{s['プラス率']}%]" for s in p["seats"]) or "—"))
     open(os.path.join(REP,"daily_report.md"),"w",encoding="utf-8").write("\n".join(md))
