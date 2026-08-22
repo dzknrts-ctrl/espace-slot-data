@@ -1,11 +1,13 @@
 name: daily-collect
 
 # 実ブラウザ(Playwright)でみんレポの反スクレイピング対策(_d2ロールCookie)を突破して収集する。
-# クラウド常設: 毎日 02:00 UTC(=11:00 JST)に前日分までを収集→分析→ダッシュボード更新→自動commit。
-# 手動(workflow_dispatch)で日付/日数指定も可。クラウド収集は2026-08-21に実測で成功を確認済み。
+# 毎朝8時(JST)を主収集とし、みんレポの掲載遅れに備えて昼・夜にも補完実行(未取得日だけ取得=既取得は即スキップ)。
+# 収集→X先読み→分析→ダッシュボード更新→自動commit。手動(workflow_dispatch)で日付/日数指定も可。
 on:
   schedule:
-    - cron: "0 2 * * *"
+    - cron: "0 23 * * *"   # 08:00 JST 主収集
+    - cron: "0 4 * * *"    # 13:00 JST 遅延掲載の補完
+    - cron: "0 11 * * *"   # 20:00 JST さらに補完
   workflow_dispatch:
     inputs:
       days:
