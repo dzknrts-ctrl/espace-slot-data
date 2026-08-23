@@ -302,6 +302,7 @@ def main():
                         try: models = build_models(page, hall, latest_pid)
                         except Exception as e: log(f"[{hall}] build-models ERROR: {e}")
 
+                processed = 0
                 for (y, m, d) in sorted(need):
                     pid = d2p.get(f"{m}/{d}")
                     if not pid:
@@ -322,6 +323,11 @@ def main():
                             time.sleep(30)          # クールダウン
                             browser, ctx, page = fresh_browser()
                     time.sleep(4.0)                 # 日ごとの間隔(throttle抑制)
+                    processed += 1
+                    if processed % 12 == 0:         # 長期バックフィル安定化: 定期的にブラウザ再起動
+                        try: browser.close()
+                        except Exception: pass
+                        browser, ctx, page = fresh_browser()
             finally:
                 try: browser.close()
                 except Exception: pass
