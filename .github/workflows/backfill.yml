@@ -1,0 +1,54 @@
+name: backfill
+
+# 過去N日を一括収集する一時ワークフロー(クラウドは連続実行=ローカルのスリープ問題が無い)。
+# このファイルをpushすると起動。既取得日はスキップするので何度でも安全に再実行可。
+# daily-collectと同じconcurrencyでpush競合と二重クロールを回避。
+on:
+  push:
+    paths:
+      - ".github/workflows/backfill.yml"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "遡って収集する日数(未取得のみ)"
+        required: false
+        default: "95"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-collect
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Backfill collect
+        run: python collect.py --days "${{ github.event.inputs.days || '95' }}"
+      - name: Analyze & dashboard
+        run: |
+          python analyze.py || true
+          python build_dashboard.py || true
+      - name: Commit
+        run: |
+          git config user.name  "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --no-edit || true
+          if [ -n "$(git status --porcelain data reports)" ]; then
+            git add data reports
+            git commit -m "backfill: $(date -u +%Y-%m-%d) 過去分収集"
+            git push
+          else
+            echo "no new data"
+          fi
