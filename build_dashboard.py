@@ -1,13 +1,44 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """reports/data.json から自己完結HTMLダッシュボード reports/dashboard.html を生成する。"""
-import os, json, html
-REP=os.path.join(os.path.dirname(os.path.abspath(__file__)),"reports")
+import os, json, html, glob, csv, statistics as st
+BASE=os.path.dirname(os.path.abspath(__file__))
+REP=os.path.join(BASE,"reports"); PRED=os.path.join(BASE,"predictions"); HINTS=os.path.join(BASE,"hints")
+
+def _load(p):
+    try: return json.load(open(p,encoding="utf-8"))
+    except: return None
+
+def build_today():
+    preds=sorted(glob.glob(os.path.join(PRED,"*.json")))
+    if not preds: return None
+    date=os.path.basename(preds[-1])[:-5]
+    picks=(_load(preds[-1]) or {}).get("picks",{})
+    halls={}
+    for hall,p in picks.items():
+        h=_load(os.path.join(HINTS,f"{date}_{hall}.json"))
+        halls[hall]={
+          "hint": ({"event":h.get("event"),"torizai":h.get("torizai"),
+                    "strength":h.get("strength"),"kishu":h.get("kishu") or []} if h else None),
+          "shima":[{"model":s["model"],"dai":s.get("台数"),"why":s.get("理由")} for s in p.get("shima",[])],
+          "seats":[{"daban":s["daban"],"model":s.get("model"),"pr":s.get("プラス率")} for s in p.get("seats",[])],
+          "weak": hall in ("island_akiba","espace_akiba"),
+        }
+    cum=None
+    tr=os.path.join(REP,"track_record.csv")
+    if os.path.exists(tr):
+        rows=list(csv.DictReader(open(tr,encoding="utf-8-sig")))
+        if rows:
+            def S(k): return sum(int(r[k]) for r in rows)
+            eds=[int(r["エッジ"]) for r in rows if r.get("エッジ","")!=""]
+            cum={"ih":S("島的中"),"it":S("島数"),"sh":S("台的中"),"stt":S("台数"),
+                 "edge":round(st.mean(eds)) if eds else 0,"days":len({r["date"] for r in rows})}
+    return {"date":date,"halls":halls,"cum":cum}
 
 def main():
     data=json.load(open(os.path.join(REP,"data.json"),encoding="utf-8"))
-    payload=json.dumps(data,ensure_ascii=False)
-    htmltext=PAGE.replace("/*__DATA__*/","const DATA="+payload+";")
+    inject="const DATA="+json.dumps(data,ensure_ascii=False)+";\nconst TODAY="+json.dumps(build_today(),ensure_ascii=False)+";"
+    htmltext=PAGE.replace("/*__DATA__*/",inject)
     open(os.path.join(REP,"dashboard.html"),"w",encoding="utf-8").write(htmltext)
     print("wrote", os.path.join(REP,"dashboard.html"))
 
@@ -86,6 +117,7 @@ td.num{font-variant-numeric:tabular-nums}
   <div class="range" id="range"></div>
 </div></header>
 <div class="wrap">
+  <div id="today"></div>
   <div class="tabs" id="tabs"></div>
   <div id="view"></div>
   <div class="note" id="note"></div>
@@ -179,6 +211,27 @@ HALLS.forEach((h,i)=>{const b=el('button','tab'+(i===0?' on':''),HN[h]);
   b.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render(h);};
   tabs.appendChild(b);});
 document.getElementById('note').innerHTML='データ出典: みんレポ（独自調査値・参考情報）。設定/勝敗を保証するものではありません。日次自動更新。';
+function renderToday(){
+  if(typeof TODAY==='undefined'||!TODAY){return;}
+  const t=TODAY, box=document.getElementById('today'); if(!box) return;
+  const pc=(a,b)=>b?Math.round(100*a/b)+'%':'-';
+  const card='background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;margin:18px 0 6px';
+  const mut='color:var(--muted);font-size:12px';
+  let h='<div style="'+card+'">';
+  h+='<div style="font-weight:700;font-size:15px;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline">🎯 今日('+t.date+')の狙い';
+  if(t.cum){h+='<span style="'+mut+'">直近'+t.cum.days+'日成績: 島的中'+pc(t.cum.ih,t.cum.it)+' / 台的中'+pc(t.cum.sh,t.cum.stt)+' / 平均エッジ'+sign(t.cum.edge)+'枚</span>';}
+  h+='</div>';
+  for(const k of HALLS){const hall=t.halls[k]; if(!hall) continue;
+    h+='<div style="border-top:1px solid var(--line);padding:9px 0 4px"><div style="font-weight:700;font-size:13px">'+HN[k]+'</div>';
+    if(hall.hint){let tg=[]; if(hall.hint.torizai)tg.push('🎪取材'); if(hall.hint.strength==="strong")tg.push('【強】'); if(hall.hint.event)tg.push(hall.hint.event);
+      if(tg.length)h+='<div style="color:var(--accent);font-size:12.5px;font-weight:700">📢 '+tg.join(' / ')+'</div>';
+      if(hall.hint.kishu&&hall.hint.kishu.length)h+='<div style="'+mut+'">示唆機種: '+hall.hint.kishu.join('・')+'</div>';}
+    h+='<div style="font-size:12.5px;margin-top:3px"><b>島</b> '+hall.shima.map(s=>s.model+'<span style="'+mut+'">('+s.dai+'台/'+s.why+')</span>').join(' ・ ')+'</div>';
+    h+='<div style="font-size:12.5px"><b>台</b> '+hall.seats.map(s=>s.daban+(s.model?'('+s.model+')':'')+'<span style="'+mut+'">['+s.pr+'%]</span>').join(' ・ ')+(hall.weak?'<span style="'+mut+'"> ※台クセ弱・島単位で</span>':'')+'</div>';
+    h+='</div>';}
+  h+='</div>'; box.innerHTML=h;
+}
+renderToday();
 render(HALLS[0]);
 </script></body></html>"""
 

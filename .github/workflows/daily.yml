@@ -52,11 +52,11 @@ jobs:
           python harvest_x.py "$TODAY" || true
       - name: Analyze & dashboard
         run: |
-          python analyze.py || true
-          python build_dashboard.py || true
           TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          python analyze.py || true
           python shima.py "$TODAY" || true
           python track.py daily "$TODAY" || true
+          python build_dashboard.py || true
       - name: Commit
         run: |
           git config user.name  "collector-bot"

@@ -15,13 +15,12 @@ $env:PYTHONIOENCODING = "utf-8"
 # 1.5) 店X先読みを収集(取材/全台/機種/イベント)
 & $py (Join-Path $repo "harvest_x.py") ((Get-Date).ToString("yyyy-MM-dd")) 2>&1 | Tee-Object -FilePath $log -Append
 
-# 2) 分析レポート＆ダッシュボード更新
+# 2) 分析→shima→答え合わせ→ダッシュボード(最後=今日の狙いを取り込む)
+$today = (Get-Date).ToString("yyyy-MM-dd")
 & $py (Join-Path $repo "analyze.py") 2>&1 | Tee-Object -FilePath $log -Append
-& $py (Join-Path $repo "build_dashboard.py") 2>&1 | Tee-Object -FilePath $log -Append
-$today = (Get-Date).ToString("yyyy-MM-dd")   # 当日の狙い島・狙い台
 & $py (Join-Path $repo "shima.py") $today 2>&1 | Tee-Object -FilePath $log -Append
-# 予測→答え合わせループ（今日を予測＋未採点の過去予測を採点＋日次レポート）
 & $py (Join-Path $repo "track.py") daily $today 2>&1 | Tee-Object -FilePath $log -Append
+& $py (Join-Path $repo "build_dashboard.py") 2>&1 | Tee-Object -FilePath $log -Append
 
 # 3) 変更があれば commit & push
 Set-Location $repo
