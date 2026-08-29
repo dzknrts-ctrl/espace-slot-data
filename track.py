@@ -97,20 +97,16 @@ def island_picks(hall, target):
             "末尾勝率":(round(100*a["mt_wn"]/a["mt_wN"]) if a["mt_wN"] else None),"末尾N":a["mt_wN"],
             "前日勝率":a["days"].get(last,{}).get("wr"),
             "最終全ツッパ":(sorted(a["push"])[-1] if a["push"] else None),"_allwr":allwr})
+    # 検証済み(3ヶ月・持続性r高)シグナルのみで採点: 看板島(全ツッパ頻度)+島勝率+平均差枚。
+    # 据え置き/ローテ/曜日/末尾は検証で否定orノイズのため不採用。
     zw=zz([r["全体勝率"] for r in rows]); zp=zz([r["全ツッパ日数"] for r in rows]); zs=zz([r["平均差枚"] for r in rows])
     for i,r in enumerate(rows):
-        wd=(r["曜勝率"] if r["曜勝率"] is not None else r["全体勝率"])
-        mt=(r["末尾勝率"] if r["末尾勝率"] is not None else r["全体勝率"])
-        gap=(pdt(last)-pdt(r["最終全ツッパ"])).days if r["最終全ツッパ"] else 0
-        rot=min(gap,10)/10 if r["全ツッパ日数"]>=2 else 0
-        r["score"]=zw[i]*1.0+zp[i]*0.8+zs[i]*0.5+((wd-r['_allwr'])/100)*0.6+((mt-r['_allwr'])/100)*0.4+rot*0.4
+        r["score"]=zp[i]*1.0 + zw[i]*0.9 + zs[i]*0.6
         reason=[]
-        if r["曜勝率"] is not None and r["曜勝率"]>=60: reason.append(f"{WD[twd]}{r['曜勝率']}%")
-        if r["末尾勝率"] is not None and r["末尾勝率"]>=60: reason.append(f"末尾{tmt}={r['末尾勝率']}%")
-        if r["前日勝率"] is not None and r["前日勝率"]>=65: reason.append("前日全ツッパ(据置)")
-        if gap>=5 and r["全ツッパ日数"]>=2: reason.append(f"投入から{gap}日(ローテ)")
-        if r["全ツッパ日数"]>=3: reason.append(f"常連({r['全ツッパ日数']}回)")
-        r["理由"]="/".join(reason) or "優遇度"
+        if r["全ツッパ日数"]>=3: reason.append(f"看板島(全ツッパ{r['全ツッパ日数']}回)")
+        if r["全体勝率"]>=45:   reason.append(f"勝率{r['全体勝率']}%")
+        if r["平均差枚"]>=200:  reason.append(f"平均+{r['平均差枚']}")
+        r["理由"]="/".join(reason) or "優遇弱"
     rows.sort(key=lambda r:r["score"],reverse=True)
     return rows[:N_SHIMA]
 
@@ -271,7 +267,8 @@ def build_daily(today):
             if h.get("tanjoubi"): md.append("　誕生日連動: "+"・".join(h["tanjoubi"]))
             if h.get("raw"): md.append(f"　<sub>{h['raw']}</sub>")
         md.append("**狙い島**： "+(" ／ ".join(f"**{s['model']}**({s['台数']}台・{s['理由']})" for s in p["shima"]) or "—"))
-        md.append("**狙い台**： "+(" ／ ".join(f"{s['daban']}{'('+s['model']+')' if s['model'] else ''}[プラス率{s['プラス率']}%]" for s in p["seats"]) or "—"))
+        seat_note = "　※この店は台クセが弱く(検証r低)、台番は参考程度。島単位で狙う" if hall in ("island_akiba","espace_akiba") else ""
+        md.append("**狙い台**： "+(" ／ ".join(f"{s['daban']}{'('+s['model']+')' if s['model'] else ''}[プラス率{s['プラス率']}%]" for s in p["seats"]) or "—") + seat_note)
     open(os.path.join(REP,"daily_report.md"),"w",encoding="utf-8").write("\n".join(md))
     print("\n".join(md))
 
