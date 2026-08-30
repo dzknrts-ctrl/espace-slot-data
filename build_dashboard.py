@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """reports/data.json から自己完結HTMLダッシュボード reports/dashboard.html を生成する。"""
 import os, json, html, glob, csv, statistics as st
+import events
 BASE=os.path.dirname(os.path.abspath(__file__))
 REP=os.path.join(BASE,"reports"); PRED=os.path.join(BASE,"predictions"); HINTS=os.path.join(BASE,"hints")
 
@@ -23,6 +24,7 @@ def build_today():
           "shima":[{"model":s["model"],"dai":s.get("台数"),"why":s.get("理由")} for s in p.get("shima",[])],
           "seats":[{"daban":s["daban"],"model":s.get("model"),"pr":s.get("プラス率")} for s in p.get("seats",[])],
           "weak": hall in ("island_akiba","espace_akiba"),
+          "event": events.event_label(hall,date),
         }
     cum=None
     tr=os.path.join(REP,"track_record.csv")
@@ -223,6 +225,7 @@ function renderToday(){
   h+='</div>';
   for(const k of HALLS){const hall=t.halls[k]; if(!hall) continue;
     h+='<div style="border-top:1px solid var(--line);padding:9px 0 4px"><div style="font-weight:700;font-size:13px">'+HN[k]+'</div>';
+    if(hall.event){h+='<div style="color:var(--minus);font-weight:700;font-size:12.5px">🔥 イベント日: '+hall.event+'</div>';}
     if(hall.hint){let tg=[]; if(hall.hint.torizai)tg.push('🎪取材'); if(hall.hint.strength==="strong")tg.push('【強】'); if(hall.hint.event)tg.push(hall.hint.event);
       if(tg.length)h+='<div style="color:var(--accent);font-size:12.5px;font-weight:700">📢 '+tg.join(' / ')+'</div>';
       if(hall.hint.kishu&&hall.hint.kishu.length)h+='<div style="'+mut+'">示唆機種: '+hall.hint.kishu.join('・')+'</div>';}

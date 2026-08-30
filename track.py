@@ -9,6 +9,7 @@
 import csv, os, glob, sys, json, statistics as st
 from collections import defaultdict
 from datetime import date
+import events
 
 BASE=os.path.dirname(os.path.abspath(__file__))
 DATA=os.path.join(BASE,"data"); REP=os.path.join(BASE,"reports"); PRED=os.path.join(BASE,"predictions")
@@ -277,6 +278,10 @@ def build_daily(today):
         p=pred["picks"][hall]
         h=load_hint(hall,today)
         md.append(f"\n### {jp}")
+        el=events.event_label(hall,today)   # 🔥 イベント日(公約/検証カレンダー)
+        if el:
+            boost="　→設定投入強め・看板島を強気に" if events.is_event(hall,today,strong_only=True) else "　→公約日(効果は中〜要確認)"
+            md.append(f"🔥 **イベント日**： {el}{boost}")
         # 📢 示唆(画像/メール由来)を最優先で反映
         if h:
             tags=[]
