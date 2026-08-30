@@ -6,6 +6,7 @@ name: daily-collect
 on:
   schedule:
     - cron: "0 23 * * *"   # 08:00 JST 主収集
+    - cron: "30 23 * * *"  # 08:30 JST 8時に未掲載だった分を再確認
     - cron: "0 4 * * *"    # 13:00 JST 遅延掲載の補完
     - cron: "0 11 * * *"   # 20:00 JST さらに補完
   workflow_dispatch:
