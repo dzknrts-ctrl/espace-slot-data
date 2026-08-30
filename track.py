@@ -130,8 +130,11 @@ def seat_picks(hall, target):
     byd=defaultdict(list)
     for r in db: byd[str(r.get("daban"))].append(r)
     dates=sorted({r["date"] for r in db}); last=dates[-1] if dates else None
+    present=({str(r.get("daban")) for r in db if (pdt(target)-pdt(r["date"])).days<=10}
+             if last else set())   # 直近10日に現存する台番のみ(入替で撤去された台番を除外)
     seats=[]
     for dab,rs in byd.items():
+        if dab not in present: continue
         rs=sorted(rs,key=lambda r:r["date"]); sa=[r["_sa"] for r in rs if r["_sa"] is not None]
         if len(sa)<5:continue
         plus=sum(1 for x in sa if x>0)
