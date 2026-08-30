@@ -25,6 +25,7 @@ HALLS={"shinkan":"エスパス上野新館","honkan":"エスパス上野本館",
 WD=["月","火","水","木","金","土","日"]
 THR_W,THR_D,THR_N=65.0,108.0,4
 N_SHIMA,N_SEAT=3,5
+RECENT_DAYS=28   # 狙い選定は直近N日のみ使用(力を入れる機種は月単位で変わるため。検証で上野の島エッジ最大)
 
 # 機種タイプ: ジャグラー/ハナハナは常に優先。それ以外のノーマルAタイプは打つ機会が少ないため優先度を下げる。
 # (このリストはユーザーの実戦に合わせて調整可)
@@ -81,6 +82,7 @@ def load_daban(hall, before=None, on=None):
 def island_picks(hall, target):
     ty,tm,td=map(int,target.split("-")); twd=date(ty,tm,td).weekday(); tmt=td%10
     ks=load_kishu(hall, before=target)
+    ks=[r for r in ks if (date(ty,tm,td)-pdt(r["date"])).days<=RECENT_DAYS]  # 直近N日のみ
     if not ks: return []
     dates=sorted({r["date"] for r in ks}); last=dates[-1]
     isl=defaultdict(lambda:{"days":{}, "wn":0,"wN":0,"sa_w":0.0,"dai":0,
@@ -124,7 +126,7 @@ def island_picks(hall, target):
     return rows[:N_SHIMA]
 
 def seat_picks(hall, target):
-    db=load_daban(hall, before=target)
+    db=load_daban(hall, before=target)   # 台番のクセは遅い信号→長期データを使う(島と違いウィンドウ不使用)
     byd=defaultdict(list)
     for r in db: byd[str(r.get("daban"))].append(r)
     dates=sorted({r["date"] for r in db}); last=dates[-1] if dates else None

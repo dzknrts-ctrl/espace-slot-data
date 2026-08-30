@@ -12,7 +12,7 @@ on:
       days:
         description: "遡って収集する日数(未取得のみ)"
         required: false
-        default: "95"
+        default: "190"
 
 permissions:
   contents: write
