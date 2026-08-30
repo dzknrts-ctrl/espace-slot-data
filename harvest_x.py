@@ -13,7 +13,8 @@ DATA=os.path.join(BASE,"data"); HINTS=os.path.join(BASE,"hints")
 UA=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 # 店キー -> Xハンドル（秋葉原2店のhandleが分かれば追記）
-HALLS_X={"honkan":"ueno_honkan0821","shinkan":"espace_ueno_iyo"}
+HALLS_X={"honkan":"ueno_honkan0821","shinkan":"espace_ueno_iyo",
+         "espace_akiba":"akibaespace","island_akiba":"akiba_island"}
 
 STRONG_KW=["取材","撃パス","全台","全機種全台","周年","S級ホール調査","ピン王","設定6","6確","来店","ライター"]
 TORIZAI_KW=["取材","撃パス","来店","ライター"]
