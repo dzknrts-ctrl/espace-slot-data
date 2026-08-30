@@ -87,8 +87,8 @@ def analyze(hall, target):
     # 今日の狙い島スコア
     zw=z([r["全体勝率"] for r in rows]); zp=z([r["全ツッパ日数"] for r in rows]); zs=z([r["平均差枚"] for r in rows])
     for i,r in enumerate(rows):
-        # 検証済みシグナルのみ(看板島=全ツッパ頻度 + 島勝率 + 平均差枚)。据え置き/ローテ/曜日/末尾は不採用。
-        r["狙い島スコア"]=round(zp[i]*1.0 + zw[i]*0.9 + zs[i]*0.6, 3)
+        # 平均差枚を主指標に(検証で島エッジ最大)。看板島/勝率は軽い補助。
+        r["狙い島スコア"]=round(zs[i]*1.3 + zp[i]*0.3 + zw[i]*0.1, 3)
     return {"dates":dates,"last":last,"twd":twd,"tmt":tmt,"rows":rows}
 
 def top_seats(hall, models_hint=None, k=3):

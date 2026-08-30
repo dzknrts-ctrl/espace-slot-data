@@ -26,6 +26,17 @@ WD=["月","火","水","木","金","土","日"]
 THR_W,THR_D,THR_N=65.0,108.0,4
 N_SHIMA,N_SEAT=3,5
 
+# 機種タイプ: ジャグラー/ハナハナは常に優先。それ以外のノーマルAタイプは打つ機会が少ないため優先度を下げる。
+# (このリストはユーザーの実戦に合わせて調整可)
+NORMAL_A_KW=["ディスクアップ","ハナビ","サンダーV","アレックス","チバリヨ","ヤバチバ",
+             "バーサス","吉宗","クランキー","ドッチ","ニューパルサー","ドンちゃん",
+             "ゲッターマウス","マイフラワー","政宗","猪木"]
+NICHE_A_PENALTY=1.6   # 非ジャグラー/ハナハナAタイプへの減点(スコアから引く)
+def is_niche_A(model):
+    m=model or ""
+    if "ジャグラー" in m or "ハナハナ" in m: return False
+    return any(k in m for k in NORMAL_A_KW)
+
 def nf(s):
     try:return float(str(s).replace(",",""))
     except:return None
@@ -101,11 +112,13 @@ def island_picks(hall, target):
     # 据え置き/ローテ/曜日/末尾は検証で否定orノイズのため不採用。
     zw=zz([r["全体勝率"] for r in rows]); zp=zz([r["全ツッパ日数"] for r in rows]); zs=zz([r["平均差枚"] for r in rows])
     for i,r in enumerate(rows):
-        r["score"]=zp[i]*1.0 + zw[i]*0.9 + zs[i]*0.6
+        # 平均差枚を主指標に(検証で島エッジ最大)。看板島(全ツッパ頻度)/勝率は軽い補助。非ジャグラー/ハナハナAタイプは減点。
+        r["score"]=zs[i]*1.3 + zp[i]*0.3 + zw[i]*0.1 - (NICHE_A_PENALTY if is_niche_A(r["model"]) else 0)
         reason=[]
+        if r["平均差枚"]>=150:  reason.append(f"平均+{r['平均差枚']}")
         if r["全ツッパ日数"]>=3: reason.append(f"看板島(全ツッパ{r['全ツッパ日数']}回)")
-        if r["全体勝率"]>=45:   reason.append(f"勝率{r['全体勝率']}%")
-        if r["平均差枚"]>=200:  reason.append(f"平均+{r['平均差枚']}")
+        if r["全体勝率"]>=48:   reason.append(f"勝率{r['全体勝率']}%")
+        if is_niche_A(r["model"]): reason.append("Aタイプ優先↓")
         r["理由"]="/".join(reason) or "優遇弱"
     rows.sort(key=lambda r:r["score"],reverse=True)
     return rows[:N_SHIMA]
@@ -124,7 +137,11 @@ def seat_picks(hall, target):
         lr=next((r for r in reversed(rs) if r["date"]==last),None)
         seats.append({"daban":dab,"model":model,"プラス率":round(100*plus/len(sa)),
                       "平均差枚":round(st.mean(sa)),"前日差枚":lr["_sa"] if lr else None})
-    seats.sort(key=lambda s:(s["プラス率"],s["平均差枚"]),reverse=True)
+    if seats:   # 平均差枚を主に(勝率は補助)。非ジャグラー/ハナハナAタイプは減点。
+        zm=zz([s["平均差枚"] for s in seats]); zp2=zz([s["プラス率"] for s in seats])
+        for i,s in enumerate(seats):
+            s["_sc"]=zm[i]*1.1 + zp2[i]*0.4 - (NICHE_A_PENALTY if is_niche_A(s["model"]) else 0)
+        seats.sort(key=lambda s:s["_sc"],reverse=True)
     return seats[:N_SEAT]
 
 def predict(target):
