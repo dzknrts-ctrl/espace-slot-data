@@ -22,6 +22,9 @@ def events_for(hall, d):
         if dd%10 in (4,7): ev.append(("4/7のつく日",'normal'))
     elif hall=="honkan":
         if dd%10==7: ev.append(("7のつく日",'normal'))
+    elif hall=="stardust":
+        # 8のつく日: 61日データ検証で 平均総差枚+19.2万(平常+8.7万)/台平均+2361(平常+1282) と激熱確認
+        if dd%10==8: ev.append(("8のつく日",'strong'))
     return ev
 
 def event_label(hall, d):
