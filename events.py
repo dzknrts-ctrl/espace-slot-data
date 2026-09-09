@@ -25,6 +25,11 @@ def events_for(hall, d):
     elif hall=="stardust":
         # 8のつく日: 61日データ検証で 平均総差枚+19.2万(平常+8.7万)/台平均+2361(平常+1282) と激熱確認
         if dd%10==8: ev.append(("8のつく日",'strong'))
+    elif hall=="bigdipper":
+        # 誕生祭(11/22): 公約かつデータ検証で 22日+21万/11日+19万(全体+15万) と最強
+        if dd in (11,22): ev.append(("誕生祭",'strong'))
+        # 7のつく日(旧イベ): 残存だが直近データでは効果薄
+        if dd%10==7: ev.append(("7のつく日(旧イベ)",'normal'))
     return ev
 
 def event_label(hall, d):
