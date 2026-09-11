@@ -7,3 +7,4 @@ run.log
 run_daily.log
 _run_*.log
 *.tmp
+_ab_*/
