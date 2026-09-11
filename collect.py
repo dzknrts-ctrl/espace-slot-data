@@ -29,7 +29,7 @@
   python collect.py --force             # 既存CSVも上書き
 """
 import argparse, csv, os, re, sys, time, json, urllib.parse
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, date
 from playwright.sync_api import sync_playwright
 
 BASE = "https://min-repo.com"
@@ -46,6 +46,8 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 PACE = 2.2          # ページ遷移間の待機(秒)。負荷とレート制限回避のバランス
 BACKFILL_DAYS = 5
+REFRESH_RECENT = 3   # 直近N日は既取得でも毎回再確認(みんレポの掲載遅れで部分データが固定化するのを防ぐ)
+MIN_COVERAGE = 0.90  # 既存より台数が少ない部分データでは上書きしない安全弁のしきい値
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 
 def log(*a): print(*a, flush=True)
@@ -200,7 +202,7 @@ def build_models(page, hall, pid):
     return d2m
 
 
-def collect_one(page, hall, y, m, d, pid, models):
+def collect_one(page, hall, y, m, d, pid, models, force=False):
     date_str = f"{y:04d}-{m:02d}-{d:02d}"
     if not goto_data(page, f"{BASE}/{pid}/", marker="勝率"):
         raise RuntimeError("記事取得失敗(throttle?)")
@@ -230,6 +232,18 @@ def collect_one(page, hall, y, m, d, pid, models):
 
     os.makedirs(DATA_DIR, exist_ok=True)
     path = os.path.join(DATA_DIR, f"{date_str}_{hall}.csv")
+    # 安全弁: 差枚の実値(非空)が既存より少ない部分データでは上書きしない。
+    # みんレポは負荷時に多くの台の差枚を「-」(非掲載)で返すため、最も差枚が揃ったスナップショットを保持する。
+    new_sa = sum(1 for r in rows if r["samai"] not in ("", "None", None))
+    if not force and os.path.exists(path):
+        try:
+            existing_sa = sum(1 for r in csv.DictReader(open(path, encoding="utf-8"))
+                              if r.get("samai") not in ("", "None", None))
+        except Exception:
+            existing_sa = -1
+        if existing_sa > new_sa:
+            log(f"[{hall}] {date_str} 既存の差枚{existing_sa}件 > 今回{new_sa}件、上書きせず維持")
+            return True   # より完全な既存を保持=処理済み(成功扱い・リトライ不要)
     with open(path, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["date","hall","model","daban","G","BB","RB","samai","deri","gousei","bb_bunbo","rb_bunbo"])
         w.writeheader(); w.writerows(rows)
@@ -281,7 +295,9 @@ def main():
 
         for hall in halls:
             need = [(y, m, d) for (y, m, d) in targets
-                    if a.force or not os.path.exists(os.path.join(DATA_DIR, f"{y:04d}-{m:02d}-{d:02d}_{hall}.csv"))]
+                    if a.force
+                    or not os.path.exists(os.path.join(DATA_DIR, f"{y:04d}-{m:02d}-{d:02d}_{hall}.csv"))
+                    or (now.date() - date(y, m, d)).days <= REFRESH_RECENT]  # 直近数日は掲載遅れ対策で再確認
             if not need and not a.build_models:
                 log(f"[{hall}] 対象日はすべて取得済み、スキップ"); continue
             if need: had_need = True
@@ -313,7 +329,7 @@ def main():
                     for attempt in range(2):     # クラッシュ/throttle時はブラウザ再起動して1回だけ再試行
                         try:
                             page = ctx.new_page()   # 日ごとに新規ページ
-                            if collect_one(page, hall, y, m, d, pid, models):
+                            if collect_one(page, hall, y, m, d, pid, models, force=a.force):
                                 wrote_any = True; ok = True
                             try: page.close()
                             except Exception: pass
