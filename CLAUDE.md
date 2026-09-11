@@ -28,6 +28,8 @@
 - `pick_today.py YYYY-MM-DD` / `shima.py` — 狙い台/狙い島選定。
 - `events.py` — イベントカレンダー（下記）。`analyze.py` `build_dashboard.py` — 集計/ダッシュボード生成。
 - `monthly_kishu.py YYYY-MM` + `build_monthly_html.py` — 月間機種別差枚ランキング「データ帳」HTML(reports/monthly.html)。
+- `build_sheet_images.py YYYY-MM` — 各店の機種別差枚を「スプレッドシート風PNG」で reports/img/ に出力(左=地雷/右=優秀ヒート)。
+- `monthly_update.py` — 前月＋当月のランキング/PNG/データ帳/ギャラリー(reports/gallery.html)を一括再生成。**daily.ymlに組込済で毎日自動更新**(月初に前月確定)。ダッシュボードのヘッダから「🖼機種別差枚(画像)」「📊月間データ帳」で閲覧。
 - `analyze_day8.py <hall> <末尾>` — Nのつく日イベント傾向分析。`day_pattern.py <hall>` — 曜日/末尾/特定日パターン。
 - `harvest_x.py`（**現在Xの仕様変更でログアウト閲覧不可＝0件。要ログインセッション**）、`hints_vision.py`（示唆画像OCR、**ANTHROPIC_API_KEY必要**）。
 
