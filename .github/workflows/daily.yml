@@ -58,6 +58,9 @@ jobs:
           python shima.py "$TODAY" || true
           python track.py daily "$TODAY" || true
           python build_dashboard.py || true
+      - name: Monthly rankings & images (前月＋当月を再生成)
+        run: |
+          python monthly_update.py || true
       - name: Commit
         run: |
           git config user.name  "collector-bot"

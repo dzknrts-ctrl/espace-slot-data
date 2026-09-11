@@ -30,6 +30,10 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 8
 .brand{font-family:Oswald,sans-serif;font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--ink)}
 .brand b{color:var(--accent)}
 .tagline{font-size:12.5px;color:var(--muted)}
+.topnav{display:flex;gap:8px;flex-wrap:wrap}
+.topnav a{font-size:12.5px;font-weight:700;text-decoration:none;color:var(--accent);
+  border:1px solid var(--line);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.topnav a:hover{border-color:var(--accent)}
 .range{margin-left:auto;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 6px}
 .tab{font-family:Oswald,sans-serif;font-weight:600;letter-spacing:.02em;font-size:14px;
@@ -69,7 +73,11 @@ td.num{font-variant-numeric:tabular-nums}
 </style></head><body>
 <header><div class="head-in">
   <div class="brand">エスパス<b>出玉レーダー</b></div>
-  <div class="tagline">上野2店・秋葉原2店／全台データ日次集計</div>
+  <div class="tagline">上野2店・秋葉原2店・門前仲町2店／全台データ日次集計</div>
+  <nav class="topnav">
+    <a href="./gallery.html">🖼 機種別差枚(画像)</a>
+    <a href="./monthly.html">📊 月間データ帳</a>
+  </nav>
   <div class="range" id="range"></div>
 </div></header>
 <div class="wrap">
