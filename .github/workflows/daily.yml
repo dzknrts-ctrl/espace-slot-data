@@ -47,6 +47,9 @@ jobs:
           else
             python collect.py --days "${{ github.event.inputs.days || '5' }}"
           fi
+      - name: Collect Big Apple via アナスロ (差枚非掲載店の補完)
+        run: |
+          python collect_anaslo.py --hall bigapple --days 5 || true
       - name: Harvest X hints (best-effort)
         run: |
           TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)

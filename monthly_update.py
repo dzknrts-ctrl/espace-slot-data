@@ -11,8 +11,8 @@ REP=os.path.join(BASE,"reports")
 JST=timezone(timedelta(hours=9))
 HALLS=[("shinkan","エスパス上野新館"),("honkan","エスパス上野本館"),
        ("island_akiba","アイランド秋葉原"),("espace_akiba","エスパス秋葉原駅前"),
-       ("bigdipper","BIGディッパー門前仲町"),("stardust","門前仲町スターダスト")]
-# bigappleはみんレポが差枚非掲載(出率のみ)のため差枚の画像/ランキングから除外
+       ("bigdipper","BIGディッパー門前仲町"),("stardust","門前仲町スターダスト"),
+       ("bigapple","ビッグアップル秋葉原")]  # bigappleはアナスロ由来(機種別TOP20/優秀機種)
 
 def run(*args):
     subprocess.run([PY]+list(args), cwd=BASE, check=False)

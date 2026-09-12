@@ -23,9 +23,10 @@ def load_hint(hall, date):
     return None
 HALLS={"shinkan":"エスパス上野新館","honkan":"エスパス上野本館",
        "island_akiba":"アイランド秋葉原","espace_akiba":"エスパス秋葉原駅前",
-       "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト"}
-# bigapple(ビッグアップル秋葉原)はみんレポが差枚を掲載せず出率のみ(台別差枚が全て±1)=差枚分析不可のため除外。
-# 台番(座席)データが信頼できる店。門前仲町2店はみんレポが台別差枚を約半分「-」で出し切らない為、島(機種)のみで狙う。
+       "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト",
+       "bigapple":"ビッグアップル秋葉原"}
+# 台番(座席)データが信頼できる店。門前仲町2店はみんレポが台別差枚を約半分「-」で、
+# bigappleはみんレポ差枚非掲載(アナスロの機種別TOP20で補完)のため、いずれも島(機種)のみで狙う。
 SEAT_OK={"shinkan","honkan","island_akiba","espace_akiba"}
 WD=["月","火","水","木","金","土","日"]
 THR_W,THR_D,THR_N=65.0,108.0,4

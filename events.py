@@ -30,6 +30,9 @@ def events_for(hall, d):
         if dd in (11,22): ev.append(("誕生祭",'strong'))
         # 7のつく日(旧イベ): 残存だが直近データでは効果薄
         if dd%10==7: ev.append(("7のつく日(旧イベ)",'normal'))
+    elif hall=="bigapple":
+        # 旧イベ(アナスロ/スロマップ記載): 7のつく日・ゾロ目。未検証のためnormal。
+        if dd%10==7 or dd in (11,22): ev.append(("旧イベ(7/ゾロ目)",'normal'))
     return ev
 
 def event_label(hall, d):
