@@ -40,6 +40,7 @@ HALLS = {
     "espace_akiba": {"name": "エスパス日拓秋葉原駅前店", "tag": "エスパス日拓秋葉原駅前店"},
     "bigdipper":    {"name": "BIGディッパー門前仲町店",   "tag": "ビックディッパー門前仲町店"},
     "stardust":     {"name": "門前仲町スターダスト",       "tag": "門前仲町スターダスト"},
+    "bigapple":     {"name": "ビッグアップル秋葉原",       "tag": "ビッグアップル秋葉原店"},
 }
 JST = timezone(timedelta(hours=9))
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "

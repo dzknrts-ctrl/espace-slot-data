@@ -23,8 +23,10 @@ def load_hint(hall, date):
     return None
 HALLS={"shinkan":"エスパス上野新館","honkan":"エスパス上野本館",
        "island_akiba":"アイランド秋葉原","espace_akiba":"エスパス秋葉原駅前",
-       "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト"}
-# 台番(座席)データが信頼できる店。門前仲町2店はみんレポが台別差枚を出し切らない為、島(機種)のみで狙う。
+       "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト",
+       "bigapple":"ビッグアップル秋葉原"}
+# 台番(座席)データが信頼できる店。門前仲町2店とbigappleはみんレポが台別差枚を約半分「-」で
+# 出し切らず(残りがプラス偏り)、座席狙いは不成立→島(機種)のみで狙う(検証済:勝ち台率59-71%と不自然)。
 SEAT_OK={"shinkan","honkan","island_akiba","espace_akiba"}
 WD=["月","火","水","木","金","土","日"]
 THR_W,THR_D,THR_N=65.0,108.0,4
@@ -299,7 +301,7 @@ def build_daily(today):
             if h.get("raw"): md.append(f"　<sub>{h['raw']}</sub>")
         md.append("**狙い島**： "+(" ／ ".join(f"**{s['model']}**({s['台数']}台・{s['理由']})" for s in p["shima"]) or "—"))
         if hall not in SEAT_OK:
-            md.append("**狙い台**： —　※門前仲町はみんレポが台別差枚を出し切らない為、島(機種)単位で狙う")
+            md.append("**狙い台**： —　※この店はみんレポが台別差枚を出し切らない為、島(機種)単位で狙う")
         else:
             seat_note = "　※この店は台クセが弱く(検証r低)、台番は参考程度。島単位で狙う" if hall in ("island_akiba","espace_akiba") else ""
             md.append("**狙い台**： "+(" ／ ".join(f"{s['daban']}{'('+s['model']+')' if s['model'] else ''}[プラス率{s['プラス率']}%]" for s in p["seats"]) or "—") + seat_note)
