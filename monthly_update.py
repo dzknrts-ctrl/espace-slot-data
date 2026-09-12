@@ -51,7 +51,7 @@ img{width:100%;height:auto;display:block;border-radius:6px}
 .note{color:var(--muted);font-size:12px;margin-top:8px}
 </style></head><body><div class="wrap">
 <h1>機種別差枚 画像ギャラリー</h1>
-<div class="sub">左＝地雷(マイナス) / 右＝優秀(プラス・黄橙ほど大量放出)。みんレポ自動集計。</div>
+<div class="sub">左＝地雷(マイナス) / 右＝優秀(プラス・黄橙ほど大量放出)。みんレポ自動集計。<b>画像をタップで拡大</b>。</div>
 <div class="row"><select id="mon"></select><a class="back" href="./dashboard.html">← ダッシュボードへ</a></div>
 <div id="view"></div>
 <div class="note">当月は集計途中(日々更新)。上野2店=2月〜 / 門前仲町2店=7月〜。</div>
@@ -63,7 +63,7 @@ const mlabel=m=>m.slice(0,4)+"年 "+(+m.slice(5,7))+"月";
 const sel=document.getElementById('mon'), view=document.getElementById('view');
 months.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=mlabel(m);sel.appendChild(o);});
 function render(){const m=sel.value;view.innerHTML=(DATA[m]||[]).map(h=>
-  `<figure><figcaption>${NAMES[h]}</figcaption><img loading="lazy" src="img/${m}_${h}.png" alt="${NAMES[h]} ${m}"></figure>`).join('');}
+  `<figure><figcaption>${NAMES[h]}</figcaption><a href="img/${m}_${h}.png" target="_blank" rel="noopener"><img loading="lazy" src="img/${m}_${h}.png" alt="${NAMES[h]} ${m}"></a></figure>`).join('');}
 sel.addEventListener('change',render); if(months.length){sel.value=months[0];} render();
 </script></body></html>"""
     html=html.replace("__DATA__",json.dumps(data,ensure_ascii=False)).replace("__NAMES__",json.dumps(names,ensure_ascii=False))
