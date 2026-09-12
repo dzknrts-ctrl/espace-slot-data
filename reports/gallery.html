@@ -22,7 +22,7 @@ img{width:100%;height:auto;display:block;border-radius:6px}
 <div class="note">当月は集計途中(日々更新)。上野2店=2月〜 / 門前仲町2店=7月〜。</div>
 </div>
 <script>
-const DATA={"2026-09": ["shinkan", "honkan", "island_akiba", "espace_akiba", "bigdipper", "stardust", "bigapple"], "2026-08": ["shinkan", "honkan", "island_akiba", "espace_akiba", "bigdipper", "stardust", "bigapple"], "2026-07": ["shinkan", "honkan", "island_akiba", "espace_akiba", "bigdipper", "stardust", "bigapple"]}, NAMES={"shinkan": "エスパス上野新館", "honkan": "エスパス上野本館", "island_akiba": "アイランド秋葉原", "espace_akiba": "エスパス秋葉原駅前", "bigdipper": "BIGディッパー門前仲町", "stardust": "門前仲町スターダスト", "bigapple": "ビッグアップル秋葉原"};
+const DATA={"2026-09": ["shinkan", "honkan", "island_akiba", "espace_akiba", "bigdipper", "stardust"], "2026-08": ["shinkan", "honkan", "island_akiba", "espace_akiba", "bigdipper", "stardust"], "2026-07": ["shinkan", "honkan", "island_akiba", "espace_akiba", "bigdipper", "stardust"]}, NAMES={"shinkan": "エスパス上野新館", "honkan": "エスパス上野本館", "island_akiba": "アイランド秋葉原", "espace_akiba": "エスパス秋葉原駅前", "bigdipper": "BIGディッパー門前仲町", "stardust": "門前仲町スターダスト"};
 const months=Object.keys(DATA);
 const mlabel=m=>m.slice(0,4)+"年 "+(+m.slice(5,7))+"月";
 const sel=document.getElementById('mon'), view=document.getElementById('view');

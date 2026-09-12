@@ -21,8 +21,9 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 REP_DIR  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 HALLS = {"shinkan":"エスパス上野新館","honkan":"エスパス上野本館",
          "island_akiba":"アイランド秋葉原","espace_akiba":"エスパス秋葉原駅前",
-         "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト",
-         "bigapple":"ビッグアップル秋葉原"}
+         "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト"}
+# 注: ビッグアップル秋葉原(bigapple)はみんレポが差枚を掲載せず出率のみ(台別差枚が全て±1)。
+# 差枚ベースの本システムでは分析不可のため除外。collect.pyでは収集継続(将来の出率分析用)。
 # 店舗別 旧イベント日(みんレポ記載)。d=日にち, w=曜日(0=月)
 EVENT = {
   "shinkan":      lambda d,w: "4/7のつく日" if d%10 in (4,7) else "",
