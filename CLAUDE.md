@@ -15,6 +15,7 @@
 | `espace_akiba` | エスパス日拓秋葉原駅前店 | エスパス日拓秋葉原駅前店 | 522 | 同上。ToLOVE/マギレコ等 |
 | `bigdipper` | BIGディッパー門前仲町店 | **ビックディッパー門前仲町店**(ビッ**ク**) | 185 | 2026-07追加。誕生祭11/22 |
 | `stardust` | 門前仲町スターダスト | **門前仲町スターダスト**(順序注意) | 159 | 2026-07追加。8のつく日が激熱 |
+| `bigapple` | ビッグアップル秋葉原 | (みんレポは差枚非掲載) | 482 | **みんレポは差枚を出さない→アナスロ(collect_anaslo.py)から機種別実差枚を補完**。機種別TOP20(優秀機種)のみ=島単位。総差枚は"優秀機種計"で店の真の総差枚でない。旧イベ=7のつく日/ゾロ目 |
 
 ## パイプライン（クラウドで自動＝PC不要）
 - **GitHub Actions `.github/workflows/daily.yml`** が毎日自動実行（PCオフでも動く）。cron(UTC): 08:00/08:30/13:00/20:00 JSTの4回で当日分を収集→分析→ダッシュボード更新→自動commit。
@@ -23,7 +24,8 @@
 - ダッシュボード：GitHub Pages → https://dzknrts-ctrl.github.io/espace-slot-data/ （スマホ可・ログイン不要）。
 
 ## 主要スクリプト（`python <file>` / 環境=Windows, Python 3.12, playwright済）
-- `collect.py [--days N|--date M/D] [--hall KEY] [--build-models]` — 収集本体。**--build-modelsは新店で重い/ハング注意**（機種マップは`build_kanban_map.py`推奨）。
+- `collect_anaslo.py --hall bigapple --days N` — **アナスロ(ana-slo.com)からBig Appleの機種別差枚を収集**(みんレポ差枚非掲載店の補完)。突破法=Refererヘッダ(一覧URL)+画像ブロック+日ごと新規ctx+リトライ。daily.ymlに組込済。取れるのは機種別TOP20(優秀機種)まで。※別ソースを使う多サイト集計の実例。
+- `collect.py [--days N|--date M/D] [--hall KEY] [--build-models]` — 収集本体(みんレポ)。**--build-modelsは新店で重い/ハング注意**（機種マップは`build_kanban_map.py`推奨）。
 - `track.py daily YYYY-MM-DD` — 予測→答え合わせ→当日狙いレポート。
 - `pick_today.py YYYY-MM-DD` / `shima.py` — 狙い台/狙い島選定。
 - `events.py` — イベントカレンダー（下記）。`analyze.py` `build_dashboard.py` — 集計/ダッシュボード生成。
