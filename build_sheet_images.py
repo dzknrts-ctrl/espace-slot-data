@@ -61,8 +61,11 @@ def sheet_html(h):
     neg=sorted([m for m in models if m["sa"]<0],key=lambda m:m["sa"])[:NEG_MAX]
     mx=max((m["sa"] for m in pos),default=1)
     total=h["total"]; tcol="#c00000" if total<0 else "#111"
+    # bigappleはアナスロの機種別TOP20(優秀機種)ベース=総差枚は真の店合計でない旨を明記
+    src=' <span style="font-size:15px;color:#b23b2b;font-weight:700">※アナスロTOP20/優秀機種のみ</span>' if h["hall"]=="bigapple" else ""
+    totlabel='優秀機種計' if h["hall"]=="bigapple" else ''
     return f"""<div class="sheet" id="{h['hall']}">
- <div class="title">【{MLABEL}集計】{html.escape(h['name'])}<span class="tot" style="color:{tcol}">{fmt(total)}</span></div>
+ <div class="title">【{MLABEL}集計】{html.escape(h['name'])}<span class="tot" style="color:{tcol}">{fmt(total)}</span> <span style="font-size:15px;color:#6a6f7d">{totlabel}</span>{src}</div>
  <div class="cols">
   <table class="neg"><colgroup><col class="kishu"><col class="sa"></colgroup>
    <tr><th class="k">機種</th><th>差枚</th></tr>{rows_html(neg,'neg',mx)}</table>

@@ -84,11 +84,12 @@ def main():
         for dstr in targets:
             path=os.path.join(DATA_DIR,f"{dstr}_{a.hall}_kishu.csv")
             if os.path.exists(path) and not a.force:
-                # みんレポ由来の壊れたkishuは上書きしたいので、anaslo版が無いか中身で判定
+                # みんレポ由来の壊れたkishu(avg_samaiが0/±1)は上書きしたい。
+                # anaslo版は差枚が数百〜数千なので、最大絶対値>10 なら既に実データ→スキップ。
                 try:
                     ex=list(csv.DictReader(open(path,encoding="utf-8")))
-                    if ex and any(abs(float(r.get("avg_samai") or 0))>=1 for r in ex):
-                        # 既に実差枚(anaslo)っぽい→スキップ
+                    vals=[abs(float(r.get("avg_samai") or 0)) for r in ex]
+                    if vals and max(vals)>10:
                         continue
                 except Exception: pass
             rows=fetch_day(b,a.hall,dstr)
