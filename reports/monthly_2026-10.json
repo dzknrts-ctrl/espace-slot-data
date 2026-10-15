@@ -4,158 +4,152 @@
   {
    "hall": "shinkan",
    "name": "エスパス上野新館",
-   "total": 168494,
-   "ndays": 13,
+   "total": 182995,
+   "ndays": 14,
    "models": [
     {
      "model": "マイジャグラーV",
-     "sa": 140560,
-     "dai_days": 520,
-     "days": 13
+     "sa": 146392,
+     "dai_days": 556,
+     "days": 14
     },
     {
      "model": "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝",
-     "sa": 69472,
-     "dai_days": 104,
-     "days": 13
+     "sa": 72312,
+     "dai_days": 112,
+     "days": 14
     },
     {
      "model": "スマスロ リコリス・リコイル",
-     "sa": 67890,
-     "dai_days": 195,
-     "days": 13
+     "sa": 65475,
+     "dai_days": 210,
+     "days": 14
     },
     {
      "model": "ネオアイムジャグラーEX",
-     "sa": 44517,
-     "dai_days": 429,
-     "days": 13
-    },
-    {
-     "model": "スマスロモンキーターンV",
-     "sa": 44381,
-     "dai_days": 160,
-     "days": 13
+     "sa": 57255,
+     "dai_days": 462,
+     "days": 14
     },
     {
      "model": "スマスロ北斗の拳 転生の章2",
-     "sa": 42553,
-     "dai_days": 91,
-     "days": 13
+     "sa": 51289,
+     "dai_days": 98,
+     "days": 14
     },
     {
-     "model": "Lソードアート・オンライン",
-     "sa": 25220,
-     "dai_days": 65,
-     "days": 13
+     "model": "スマスロモンキーターンV",
+     "sa": 47453,
+     "dai_days": 172,
+     "days": 14
     },
     {
      "model": "スマスロ スーパーブラックジャック",
-     "sa": 23528,
-     "dai_days": 26,
-     "days": 13
+     "sa": 28636,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "Lスマスロ北斗の拳",
-     "sa": 17027,
-     "dai_days": 64,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
-     "sa": 16828,
-     "dai_days": 182,
-     "days": 13
+     "model": "Lソードアート・オンライン",
+     "sa": 26245,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "スマスロ痛いのは嫌なので防御力に極振りしたいと思います。",
-     "sa": 16172,
-     "dai_days": 52,
-     "days": 13
+     "sa": 24820,
+     "dai_days": 56,
+     "days": 14
     },
     {
-     "model": "バーサスリヴァイズ",
-     "sa": 12957,
-     "dai_days": 39,
-     "days": 13
+     "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
+     "sa": 24654,
+     "dai_days": 196,
+     "days": 14
     },
     {
-     "model": "L東京喰種",
-     "sa": 11648,
-     "dai_days": 169,
-     "days": 13
+     "model": "スマスロ化物語",
+     "sa": 13955,
+     "dai_days": 60,
+     "days": 14
     },
     {
      "model": "Lパチスロからくりサーカス2",
-     "sa": 11607,
-     "dai_days": 43,
-     "days": 13
+     "sa": 13617,
+     "dai_days": 46,
+     "days": 14
     },
     {
-     "model": "L戦国乙女４　戦乱に閃く炯眼の軍師",
-     "sa": 10737,
-     "dai_days": 51,
-     "days": 13
+     "model": "バーサスリヴァイズ",
+     "sa": 12387,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "パチスロ　ディスクアップ２",
-     "sa": 10316,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 東京リベンジャーズ",
-     "sa": 10050,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "ジャグラーガールズSS",
-     "sa": 8635,
-     "dai_days": 65,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 沖ドキ!DUO アンコール",
-     "sa": 8556,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スマスロ サンダーV",
-     "sa": 6450,
-     "dai_days": 26,
-     "days": 13
+     "model": "Lスマスロ北斗の拳",
+     "sa": 12339,
+     "dai_days": 68,
+     "days": 14
     },
     {
      "model": "戦国コレクション6",
-     "sa": 6176,
-     "dai_days": 52,
-     "days": 13
+     "sa": 12176,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "ゴーゴージャグラー３",
+     "sa": 10870,
+     "dai_days": 140,
+     "days": 14
+    },
+    {
+     "model": "ジャグラーガールズSS",
+     "sa": 10555,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "スマスロ 東京リベンジャーズ",
+     "sa": 10257,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "パチスロ　ディスクアップ２",
+     "sa": 8340,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "ウルトラミラクルジャグラー",
+     "sa": 7224,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ タコスロ",
-     "sa": 5500,
-     "dai_days": 26,
-     "days": 13
+     "sa": 6706,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "この素晴らしい世界に祝福を！",
-     "sa": 5475,
-     "dai_days": 39,
-     "days": 13
+     "model": "スマスロ モンスターハンターライズ",
+     "sa": 6656,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "ハッピージャグラーＶＩＩＩ",
+     "sa": 6146,
+     "dai_days": 98,
+     "days": 14
     },
     {
      "model": "L ＨＥＹ！エリートサラリーマン鏡",
-     "sa": 5382,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "ミスタージャグラー",
-     "sa": 5292,
-     "dai_days": 39,
-     "days": 13
+     "sa": 5406,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ ゴッドイーター リザレクション",
@@ -164,40 +158,58 @@
      "days": 4
     },
     {
-     "model": "キングハナハナ-30",
-     "sa": 4386,
-     "dai_days": 39,
-     "days": 13
+     "model": "L戦国乙女４　戦乱に閃く炯眼の軍師",
+     "sa": 4953,
+     "dai_days": 54,
+     "days": 14
     },
     {
-     "model": "ウルトラミラクルジャグラー",
-     "sa": 4008,
-     "dai_days": 39,
-     "days": 13
+     "model": "スマスロ 沖ドキ!DUO アンコール",
+     "sa": 4684,
+     "dai_days": 56,
+     "days": 14
     },
     {
-     "model": "ファンキージャグラー２ＫＴ",
-     "sa": 3830,
-     "dai_days": 65,
-     "days": 13
+     "model": "スマスロ サンダーV",
+     "sa": 4562,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "アレックス ブライト",
-     "sa": 2864,
-     "dai_days": 26,
-     "days": 13
+     "sa": 4274,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロ化物語",
-     "sa": 2255,
-     "dai_days": 56,
-     "days": 13
+     "model": "ミスタージャグラー",
+     "sa": 4215,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "ゴーゴージャグラー３",
-     "sa": 1930,
-     "dai_days": 130,
-     "days": 13
+     "model": "キングハナハナ-30",
+     "sa": 3495,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "この素晴らしい世界に祝福を！",
+     "sa": 3192,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "ファンキージャグラー２ＫＴ",
+     "sa": 1650,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "交響詩篇エウレカセブン HI-EVOLUTION ZERO TYPE-ART",
+     "sa": 1634,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スマスロ ストリートファイター6",
@@ -206,82 +218,82 @@
      "days": 4
     },
     {
-     "model": "交響詩篇エウレカセブン HI-EVOLUTION ZERO TYPE-ART",
-     "sa": 818,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ炎炎ノ消防隊2",
-     "sa": 664,
-     "dai_days": 30,
-     "days": 13
-    },
-    {
-     "model": "マイジャグラーVI",
-     "sa": 301,
-     "dai_days": 39,
-     "days": 9
-    },
-    {
      "model": "スマスロ スーパーリオエース2",
-     "sa": -16,
-     "dai_days": 26,
-     "days": 13
+     "sa": 292,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロ モンスターハンターライズ",
-     "sa": -70,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "パチスロ　甲鉄城のカバネリ",
-     "sa": -808,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ彼女、お借りします",
-     "sa": -2994,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "スマスロ やじきた道中記参る！",
-     "sa": -3339,
-     "dai_days": 43,
-     "days": 13
-    },
-    {
-     "model": "ハッピージャグラーＶＩＩＩ",
-     "sa": -3920,
-     "dai_days": 91,
-     "days": 13
-    },
-    {
-     "model": "新ハナビ",
-     "sa": -4058,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "マジカルハロウィン　～Trick or Treat!～",
-     "sa": -4390,
-     "dai_days": 26,
-     "days": 13
+     "model": "Lアズールレーン THE ANIMATION",
+     "sa": 231,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "Lパチスロ喰霊-零-Re",
-     "sa": -4566,
-     "dai_days": 39,
-     "days": 13
+     "sa": -750,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "パチスロ　甲鉄城のカバネリ",
+     "sa": -998,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ彼女、お借りします",
+     "sa": -1584,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "スマスロ ハナビ",
+     "sa": -2574,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ炎炎ノ消防隊2",
+     "sa": -3036,
+     "dai_days": 32,
+     "days": 14
+    },
+    {
+     "model": "L東京喰種",
+     "sa": -3939,
+     "dai_days": 182,
+     "days": 14
+    },
+    {
+     "model": "スマスロ やじきた道中記参る！",
+     "sa": -4332,
+     "dai_days": 46,
+     "days": 14
+    },
+    {
+     "model": "新ハナビ",
+     "sa": -4644,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "A-SLOT+ ディスクアップ ULTRAREMIX",
-     "sa": -4576,
-     "dai_days": 26,
-     "days": 13
+     "sa": -4662,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "マイジャグラーVI",
+     "sa": -4879,
+     "dai_days": 46,
+     "days": 10
+    },
+    {
+     "model": "マジカルハロウィン　～Trick or Treat!～",
+     "sa": -4984,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "Lタクトオーパス デスティニー",
@@ -290,264 +302,246 @@
      "days": 4
     },
     {
-     "model": "Lアズールレーン THE ANIMATION",
-     "sa": -5283,
-     "dai_days": 39,
-     "days": 13
+     "model": "L南国育ち SPECIAL",
+     "sa": -11068,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "沖ドキ!ゴージャス 30Φ",
-     "sa": -8334,
-     "dai_days": 39,
-     "days": 13
+     "sa": -11133,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "真打 吉宗",
-     "sa": -10920,
-     "dai_days": 78,
-     "days": 13
-    },
-    {
-     "model": "L南国育ち SPECIAL",
-     "sa": -11774,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "スマスロ ハナビ",
-     "sa": -11880,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 攻殻機動隊",
-     "sa": -14480,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スマスロ新鬼武者3",
-     "sa": -15378,
-     "dai_days": 26,
-     "days": 13
+     "sa": -11598,
+     "dai_days": 84,
+     "days": 14
     },
     {
      "model": "スロット ワールドダイスター",
-     "sa": -16764,
-     "dai_days": 39,
-     "days": 13
+     "sa": -13746,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "沖ドキ！ＧＯＬＤ-30",
-     "sa": -18909,
-     "dai_days": 117,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ革命機ヴァルヴレイヴ2",
-     "sa": -19533,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "スマスロ とある魔術の禁書目録2",
-     "sa": -20415,
-     "dai_days": 65,
-     "days": 13
+     "sa": -14769,
+     "dai_days": 126,
+     "days": 14
     },
     {
      "model": "L戦国乙女5 業火を穿つ宿焔の双刃",
-     "sa": -20421,
-     "dai_days": 117,
-     "days": 13
+     "sa": -17289,
+     "dai_days": 126,
+     "days": 14
+    },
+    {
+     "model": "スマスロ新鬼武者3",
+     "sa": -18660,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "スマスロ 攻殻機動隊",
+     "sa": -20568,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ革命機ヴァルヴレイヴ2",
+     "sa": -26937,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "モグモグ風林火山 大海戦の巻",
-     "sa": -20595,
-     "dai_days": 39,
-     "days": 13
+     "sa": -29988,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "スマスロ獣王",
-     "sa": -24606,
-     "dai_days": 54,
-     "days": 9
+     "model": "スマスロ とある魔術の禁書目録2",
+     "sa": -30280,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "スロット ソードアート・オンラインⅡ",
-     "sa": -30456,
-     "dai_days": 156,
-     "days": 13
+     "sa": -39888,
+     "dai_days": 168,
+     "days": 14
+    },
+    {
+     "model": "スマスロ獣王",
+     "sa": -40716,
+     "dai_days": 60,
+     "days": 10
     },
     {
      "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
-     "sa": -58724,
-     "dai_days": 52,
-     "days": 13
+     "sa": -60588,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "スマスロ モンスターハンターライズ:サンブレイク",
-     "sa": -70200,
-     "dai_days": 90,
-     "days": 9
+     "sa": -69810,
+     "dai_days": 100,
+     "days": 10
     },
     {
      "model": "スマスロ ミリオンゴッド-神々の軌跡-",
-     "sa": -73430,
-     "dai_days": 130,
-     "days": 13
+     "sa": -79280,
+     "dai_days": 140,
+     "days": 14
     }
    ]
   },
   {
    "hall": "honkan",
    "name": "エスパス上野本館",
-   "total": 283660,
-   "ndays": 13,
+   "total": 271149,
+   "ndays": 14,
    "models": [
     {
      "model": "マイジャグラーV",
-     "sa": 177371,
-     "dai_days": 585,
-     "days": 13
+     "sa": 198076,
+     "dai_days": 626,
+     "days": 14
     },
     {
      "model": "L東京喰種",
-     "sa": 77163,
-     "dai_days": 221,
-     "days": 13
+     "sa": 79849,
+     "dai_days": 238,
+     "days": 14
     },
     {
      "model": "ゴーゴージャグラー３",
-     "sa": 53662,
-     "dai_days": 182,
-     "days": 13
+     "sa": 49546,
+     "dai_days": 196,
+     "days": 14
     },
     {
      "model": "ネオアイムジャグラーEX",
-     "sa": 39338,
-     "dai_days": 338,
-     "days": 13
+     "sa": 36712,
+     "dai_days": 364,
+     "days": 14
     },
     {
      "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
-     "sa": 35580,
-     "dai_days": 195,
-     "days": 13
+     "sa": 36360,
+     "dai_days": 210,
+     "days": 14
     },
     {
      "model": "L戦国乙女5 業火を穿つ宿焔の双刃",
-     "sa": 29472,
-     "dai_days": 104,
-     "days": 13
-    },
-    {
-     "model": "スマスロモンキーターンV",
-     "sa": 27995,
-     "dai_days": 82,
-     "days": 13
-    },
-    {
-     "model": "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝",
-     "sa": 26742,
-     "dai_days": 78,
-     "days": 13
-    },
-    {
-     "model": "スマート沖スロ ニューキングハナハナV",
-     "sa": 25490,
-     "dai_days": 65,
-     "days": 13
-    },
-    {
-     "model": "Lスマスロ北斗の拳",
-     "sa": 23926,
-     "dai_days": 91,
-     "days": 13
-    },
-    {
-     "model": "スマスロ獣王",
-     "sa": 23595,
-     "dai_days": 45,
-     "days": 9
+     "sa": 31408,
+     "dai_days": 112,
+     "days": 14
     },
     {
      "model": "キングハナハナ-30",
-     "sa": 22300,
-     "dai_days": 130,
-     "days": 13
+     "sa": 30350,
+     "dai_days": 140,
+     "days": 14
+    },
+    {
+     "model": "スマスロモンキーターンV",
+     "sa": 26015,
+     "dai_days": 88,
+     "days": 14
+    },
+    {
+     "model": "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝",
+     "sa": 25368,
+     "dai_days": 84,
+     "days": 14
+    },
+    {
+     "model": "Lスマスロ北斗の拳",
+     "sa": 24864,
+     "dai_days": 98,
+     "days": 14
+    },
+    {
+     "model": "スマート沖スロ ニューキングハナハナV",
+     "sa": 23730,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "L ToLOVEるダークネス TRANCE ver.8.7",
-     "sa": 18972,
-     "dai_days": 39,
-     "days": 13
+     "sa": 22104,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "スマスロ獣王",
+     "sa": 21315,
+     "dai_days": 50,
+     "days": 10
     },
     {
      "model": "Lパチスロ彼女、お借りします",
-     "sa": 17325,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
-     "sa": 15672,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ炎炎ノ消防隊2",
-     "sa": 12705,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "ファンキージャグラー２ＫＴ",
-     "sa": 10488,
-     "dai_days": 104,
-     "days": 13
+     "sa": 16641,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "ミスタージャグラー",
-     "sa": 10416,
-     "dai_days": 39,
-     "days": 13
+     "sa": 13224,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "ジャグラーガールズSS",
-     "sa": 9725,
-     "dai_days": 65,
-     "days": 13
+     "model": "Lパチスロ炎炎ノ消防隊2",
+     "sa": 12825,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
+     "sa": 10376,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "ファンキージャグラー２ＫＴ",
+     "sa": 9632,
+     "dai_days": 112,
+     "days": 14
     },
     {
      "model": "Lパチスロ革命機ヴァルヴレイヴ2",
-     "sa": 9279,
-     "dai_days": 48,
-     "days": 13
+     "sa": 8799,
+     "dai_days": 52,
+     "days": 14
     },
     {
      "model": "スマスロバジリスク～甲賀忍法帖～絆2 天膳 BLACK EDITION",
-     "sa": 9222,
-     "dai_days": 39,
-     "days": 13
+     "sa": 8733,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "Lパチスロ喰霊-零-Re",
-     "sa": 7516,
-     "dai_days": 26,
-     "days": 13
+     "sa": 7126,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "戦国コレクション6",
-     "sa": 6012,
-     "dai_days": 39,
-     "days": 13
+     "sa": 5928,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "スマスロ 沖ドキ!DUO アンコール",
-     "sa": 5604,
-     "dai_days": 52,
-     "days": 13
+     "model": "ジャグラーガールズSS",
+     "sa": 5855,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "スマスロ モンスターハンターライズ",
@@ -556,58 +550,64 @@
      "days": 4
     },
     {
+     "model": "スマスロ 沖ドキ!DUO アンコール",
+     "sa": 4720,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
      "model": "Lラブ嬢3～Wご指名はいかがですか?～",
-     "sa": 4654,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "ニューキングハナハナV‐30",
-     "sa": 3888,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "ハッピージャグラーＶＩＩＩ",
-     "sa": 3816,
-     "dai_days": 52,
-     "days": 13
+     "sa": 4068,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "L南国育ち SPECIAL",
-     "sa": 3756,
-     "dai_days": 39,
-     "days": 13
+     "sa": 3867,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "ニューキングハナハナV‐30",
+     "sa": 2901,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "沖ドキ！BLACK",
-     "sa": 3348,
-     "dai_days": 52,
-     "days": 13
+     "sa": 1860,
+     "dai_days": 56,
+     "days": 14
     },
     {
-     "model": "ウルトラミラクルジャグラー",
-     "sa": -2404,
-     "dai_days": 52,
-     "days": 13
+     "model": "ハッピージャグラーＶＩＩＩ",
+     "sa": 1440,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "スマスロ痛いのは嫌なので防御力に極振りしたいと思います。",
-     "sa": -2600,
-     "dai_days": 26,
-     "days": 13
+     "sa": -2192,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "ウルトラミラクルジャグラー",
+     "sa": -2480,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "スロット ワールドダイスター",
+     "sa": -3244,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "いざ！番長",
-     "sa": -3021,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "スマスロ ゴッドイーター リザレクション",
-     "sa": -3077,
-     "dai_days": 30,
-     "days": 13
+     "sa": -3411,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ 東京リベンジャーズ",
@@ -617,9 +617,9 @@
     },
     {
      "model": "スマスロ ハナビ",
-     "sa": -4107,
-     "dai_days": 39,
-     "days": 13
+     "sa": -3894,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ ストリートファイター6",
@@ -628,64 +628,52 @@
      "days": 4
     },
     {
-     "model": "スロット ワールドダイスター",
-     "sa": -4264,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "モグモグ風林火山 大海戦の巻",
-     "sa": -5073,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
      "model": "スマスロ化物語",
-     "sa": -5100,
-     "dai_days": 26,
-     "days": 13
+     "sa": -4484,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "Lアズールレーン THE ANIMATION",
-     "sa": -5978,
-     "dai_days": 26,
-     "days": 13
+     "sa": -4574,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロ ミリオンゴッド-神々の軌跡-",
-     "sa": -6510,
-     "dai_days": 130,
-     "days": 13
+     "model": "スマスロ ゴッドイーター リザレクション",
+     "sa": -5669,
+     "dai_days": 32,
+     "days": 14
     },
     {
-     "model": "スマスロ シャーマンキング",
-     "sa": -7521,
-     "dai_days": 39,
-     "days": 13
+     "model": "モグモグ風林火山 大海戦の巻",
+     "sa": -6165,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "スマスロ北斗の拳 転生の章2",
+     "sa": -7680,
+     "dai_days": 64,
+     "days": 14
     },
     {
      "model": "スマスロ タコスロ",
      "sa": -7760,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロ北斗の拳 転生の章2",
-     "sa": -8204,
-     "dai_days": 60,
-     "days": 13
+     "model": "スマスロ シャーマンキング",
+     "sa": -10113,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ やじきた道中記参る！",
-     "sa": -11056,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スマスロ とある魔術の禁書目録2",
-     "sa": -12500,
-     "dai_days": 65,
-     "days": 13
+     "sa": -11248,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "Lパチスロからくりサーカス2",
@@ -694,64 +682,76 @@
      "days": 4
     },
     {
-     "model": "L聖闘士星矢 海皇覚醒 CUSTOM EDITION",
-     "sa": -13983,
-     "dai_days": 39,
-     "days": 13
+     "model": "マイジャグラーVI",
+     "sa": -13555,
+     "dai_days": 46,
+     "days": 10
     },
     {
      "model": "スマスロ リコリス・リコイル",
-     "sa": -14599,
-     "dai_days": 169,
-     "days": 13
+     "sa": -14040,
+     "dai_days": 182,
+     "days": 14
     },
     {
-     "model": "マイジャグラーVI",
-     "sa": -15795,
-     "dai_days": 39,
-     "days": 9
+     "model": "スマスロ とある魔術の禁書目録2",
+     "sa": -14275,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "L聖闘士星矢 海皇覚醒 CUSTOM EDITION",
+     "sa": -17163,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "スマスロ ミリオンゴッド-神々の軌跡-",
+     "sa": -17860,
+     "dai_days": 140,
+     "days": 14
     },
     {
      "model": "チバリヨ2",
-     "sa": -17541,
-     "dai_days": 39,
-     "days": 13
+     "sa": -24816,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ 攻殻機動隊",
-     "sa": -26176,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スロット ソードアート・オンラインⅡ",
-     "sa": -34910,
-     "dai_days": 130,
-     "days": 13
+     "sa": -25352,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "真打 吉宗",
-     "sa": -38358,
-     "dai_days": 78,
-     "days": 13
+     "sa": -35406,
+     "dai_days": 84,
+     "days": 14
     },
     {
      "model": "沖ドキ!ゴージャス 30Φ",
-     "sa": -38374,
-     "dai_days": 91,
-     "days": 13
+     "sa": -39921,
+     "dai_days": 98,
+     "days": 14
     },
     {
-     "model": "沖ドキ！ＧＯＬＤ-30",
-     "sa": -62352,
-     "dai_days": 208,
-     "days": 13
+     "model": "スロット ソードアート・オンラインⅡ",
+     "sa": -49490,
+     "dai_days": 140,
+     "days": 14
     },
     {
      "model": "スマスロ モンスターハンターライズ:サンブレイク",
-     "sa": -64460,
-     "dai_days": 90,
-     "days": 9
+     "sa": -53190,
+     "dai_days": 100,
+     "days": 10
+    },
+    {
+     "model": "沖ドキ！ＧＯＬＤ-30",
+     "sa": -58912,
+     "dai_days": 224,
+     "days": 14
     }
    ]
   },
@@ -1198,98 +1198,110 @@
   {
    "hall": "espace_akiba",
    "name": "エスパス秋葉原駅前",
-   "total": 550456,
-   "ndays": 13,
+   "total": 475151,
+   "ndays": 14,
    "models": [
     {
-     "model": "L ToLOVEるダークネス TRANCE ver.8.7",
-     "sa": 133020,
-     "dai_days": 390,
-     "days": 13
-    },
-    {
      "model": "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝",
-     "sa": 129500,
-     "dai_days": 650,
-     "days": 13
+     "sa": 126250,
+     "dai_days": 700,
+     "days": 14
     },
     {
-     "model": "L東京喰種",
-     "sa": 116452,
-     "dai_days": 364,
-     "days": 13
+     "model": "L ToLOVEるダークネス TRANCE ver.8.7",
+     "sa": 109110,
+     "dai_days": 420,
+     "days": 14
     },
     {
      "model": "L戦国乙女5 業火を穿つ宿焔の双刃",
-     "sa": 98592,
-     "dai_days": 416,
-     "days": 13
+     "sa": 98688,
+     "dai_days": 448,
+     "days": 14
+    },
+    {
+     "model": "L東京喰種",
+     "sa": 94388,
+     "dai_days": 392,
+     "days": 14
     },
     {
      "model": "スマスロ リコリス・リコイル",
-     "sa": 57440,
-     "dai_days": 416,
-     "days": 13
+     "sa": 55488,
+     "dai_days": 448,
+     "days": 14
     },
     {
      "model": "スマスロモンキーターンV",
-     "sa": 55502,
-     "dai_days": 116,
-     "days": 13
-    },
-    {
-     "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
-     "sa": 39582,
-     "dai_days": 234,
-     "days": 13
+     "sa": 46830,
+     "dai_days": 124,
+     "days": 14
     },
     {
      "model": "戦国コレクション6",
-     "sa": 36530,
-     "dai_days": 130,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 攻殻機動隊",
-     "sa": 31308,
-     "dai_days": 52,
-     "days": 13
+     "sa": 34980,
+     "dai_days": 140,
+     "days": 14
     },
     {
      "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
-     "sa": 30900,
-     "dai_days": 325,
-     "days": 13
+     "sa": 34775,
+     "dai_days": 350,
+     "days": 14
     },
     {
-     "model": "Lパチスロ炎炎ノ消防隊2",
-     "sa": 23784,
-     "dai_days": 78,
-     "days": 13
+     "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
+     "sa": 34398,
+     "dai_days": 252,
+     "days": 14
     },
     {
-     "model": "スロット Re:ゼロから始める異世界生活 season2",
-     "sa": 21748,
-     "dai_days": 26,
-     "days": 13
+     "model": "スマスロ 攻殻機動隊",
+     "sa": 30820,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "ファンキージャグラー２ＫＴ",
-     "sa": 21726,
-     "dai_days": 117,
-     "days": 13
+     "sa": 30393,
+     "dai_days": 126,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ炎炎ノ消防隊2",
+     "sa": 24708,
+     "dai_days": 84,
+     "days": 14
     },
     {
      "model": "スロット ゾンビランドサガ",
-     "sa": 18744,
-     "dai_days": 26,
-     "days": 13
+     "sa": 19558,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "スロット Re:ゼロから始める異世界生活 season2",
+     "sa": 16848,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "スマスロ ミリオンゴッド-神々の軌跡-",
+     "sa": 16146,
+     "dai_days": 126,
+     "days": 14
+    },
+    {
+     "model": "スマスロ ハナビ",
+     "sa": 12712,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "Lパチスロ戦姫絶唱シンフォギア 正義の歌",
-     "sa": 14948,
-     "dai_days": 26,
-     "days": 13
+     "sa": 11768,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "L虚構推理",
@@ -1298,58 +1310,52 @@
      "days": 4
     },
     {
-     "model": "スマスロ ハナビ",
-     "sa": 9402,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
      "model": "ジャグラーガールズSS",
-     "sa": 8896,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スマスロ ミリオンゴッド-神々の軌跡-",
-     "sa": 8802,
-     "dai_days": 117,
-     "days": 13
-    },
-    {
-     "model": "スマスロ獣王",
-     "sa": 7590,
-     "dai_days": 45,
-     "days": 9
-    },
-    {
-     "model": "A-SLOT+ ディスクアップ ULTRAREMIX",
-     "sa": 7494,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "ネオアイムジャグラーEX",
-     "sa": 7480,
-     "dai_days": 65,
-     "days": 13
-    },
-    {
-     "model": "Lバンドリ！",
-     "sa": 7080,
-     "dai_days": 104,
-     "days": 13
+     "sa": 8812,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "スマスロ サンダーV",
-     "sa": 5642,
-     "dai_days": 26,
-     "days": 13
+     "sa": 7056,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "Lパチスロ喰霊-零-Re",
-     "sa": 5235,
-     "dai_days": 65,
-     "days": 13
+     "model": "ネオアイムジャグラーEX",
+     "sa": 6315,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "スマスロ獣王",
+     "sa": 6135,
+     "dai_days": 50,
+     "days": 10
+    },
+    {
+     "model": "スマスロ タコスロ",
+     "sa": 5985,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "Lバンドリ！",
+     "sa": 5736,
+     "dai_days": 112,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロガールズ＆パンツァー 最終章",
+     "sa": 5538,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "Lアズールレーン THE ANIMATION",
+     "sa": 5175,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ やじきた道中記参る！",
@@ -1358,10 +1364,16 @@
      "days": 4
     },
     {
-     "model": "Lパチスロ マクロスフロンティア4",
-     "sa": 4868,
-     "dai_days": 26,
-     "days": 13
+     "model": "ウルトラミラクルジャグラー",
+     "sa": 4944,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "回胴式遊技機グランベルム",
+     "sa": 4875,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "スマスロ ストリートファイター6",
@@ -1370,82 +1382,82 @@
      "days": 4
     },
     {
-     "model": "スマスロ タコスロ",
-     "sa": 4563,
-     "dai_days": 39,
-     "days": 13
+     "model": "スマスロ とんでもスキルで異世界放浪メシ",
+     "sa": 4371,
+     "dai_days": 54,
+     "days": 14
     },
     {
-     "model": "Lパチスロガールズ＆パンツァー 最終章",
-     "sa": 4527,
-     "dai_days": 39,
-     "days": 13
+     "model": "A-SLOT+ ディスクアップ ULTRAREMIX",
+     "sa": 4302,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "ウルトラミラクルジャグラー",
-     "sa": 4140,
-     "dai_days": 26,
-     "days": 13
+     "model": "Lパチスロ喰霊-零-Re",
+     "sa": 4155,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "L戦国乙女４　戦乱に閃く炯眼の軍師",
-     "sa": 3606,
-     "dai_days": 39,
-     "days": 13
+     "sa": 3816,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ マクロスフロンティア4",
+     "sa": 3674,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "パチスロ戦国恋姫",
-     "sa": 3540,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "Lアズールレーン THE ANIMATION",
-     "sa": 3264,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "スマスロ化物語",
-     "sa": 2704,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "Lソードアート・オンライン",
-     "sa": 2292,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ革命機ヴァルヴレイヴ2",
-     "sa": 1140,
-     "dai_days": 65,
-     "days": 13
+     "sa": 3165,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ痛いのは嫌なので防御力に極振りしたいと思います。",
-     "sa": 300,
-     "dai_days": 39,
-     "days": 13
+     "sa": 3138,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "Lソードアート・オンライン",
+     "sa": 2500,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロうみねこのなく頃に2",
+     "sa": 1552,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "L邪神ちゃんドロップキック",
+     "sa": 1048,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ革命機ヴァルヴレイヴ2",
+     "sa": 960,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "A-SLOT+異世界かるてっとBT",
-     "sa": 48,
-     "dai_days": 39,
-     "days": 13
+     "sa": 762,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "スマスロ とんでもスキルで異世界放浪メシ",
-     "sa": -36,
-     "dai_days": 51,
-     "days": 13
-    },
-    {
-     "model": "回胴式遊技機グランベルム",
-     "sa": -275,
-     "dai_days": 65,
-     "days": 13
+     "model": "スマスロ頭文字D 2nd",
+     "sa": -52,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "いざ！番長",
@@ -1454,70 +1466,52 @@
      "days": 4
     },
     {
-     "model": "パチスロ　マクロスデルタ",
-     "sa": -550,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "ハッピージャグラーＶＩＩＩ",
-     "sa": -584,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロうみねこのなく頃に2",
-     "sa": -1156,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "スマスロバジリスク～甲賀忍法帖～絆2 天膳 BLACK EDITION",
-     "sa": -1156,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "L邪神ちゃんドロップキック",
-     "sa": -1184,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ革命機ヴァルヴレイヴ",
-     "sa": -1377,
-     "dai_days": 3,
-     "days": 1
+     "model": "スマスロ化物語",
+     "sa": -768,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "マイジャグラーVI",
-     "sa": -1488,
-     "dai_days": 3,
-     "days": 1
+     "sa": -972,
+     "dai_days": 6,
+     "days": 2
     },
     {
      "model": "パチスロ　戦姫絶唱シンフォギア　勇気の歌",
-     "sa": -2480,
-     "dai_days": 26,
-     "days": 13
+     "sa": -1662,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "L少女☆歌劇 レヴュースタァライト -The SLOT-",
-     "sa": -2505,
-     "dai_days": 39,
-     "days": 13
+     "model": "スマスロバジリスク～甲賀忍法帖～絆2 天膳 BLACK EDITION",
+     "sa": -1750,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "この素晴らしい世界に祝福を！",
-     "sa": -5240,
-     "dai_days": 52,
-     "days": 13
+     "model": "ハッピージャグラーＶＩＩＩ",
+     "sa": -2472,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロ頭文字D 2nd",
-     "sa": -5470,
-     "dai_days": 26,
-     "days": 13
+     "model": "ゴーゴージャグラー３",
+     "sa": -3252,
+     "dai_days": 84,
+     "days": 14
+    },
+    {
+     "model": "パチスロ　マクロスデルタ",
+     "sa": -3648,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ革命機ヴァルヴレイヴ",
+     "sa": -4065,
+     "dai_days": 6,
+     "days": 2
     },
     {
      "model": "Lパチスロからくりサーカス2",
@@ -1526,40 +1520,46 @@
      "days": 4
     },
     {
-     "model": "ゴーゴージャグラー３",
-     "sa": -5676,
-     "dai_days": 78,
-     "days": 13
-    },
-    {
-     "model": "真打 吉宗",
-     "sa": -8169,
-     "dai_days": 91,
-     "days": 13
+     "model": "L少女☆歌劇 レヴュースタァライト -The SLOT-",
+     "sa": -6195,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "L無職転生～異世界行ったら本気だす～",
-     "sa": -8302,
-     "dai_days": 26,
-     "days": 13
+     "sa": -7792,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "この素晴らしい世界に祝福を！",
+     "sa": -8824,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "スロット ソードアート・オンラインⅡ",
+     "sa": -11520,
+     "dai_days": 336,
+     "days": 14
     },
     {
      "model": "スマスロパリピ孔明",
-     "sa": -9096,
-     "dai_days": 27,
-     "days": 9
-    },
-    {
-     "model": "マイジャグラーV",
-     "sa": -10770,
-     "dai_days": 348,
-     "days": 13
+     "sa": -13086,
+     "dai_days": 30,
+     "days": 10
     },
     {
      "model": "スロット ワールドダイスター",
-     "sa": -15370,
-     "dai_days": 65,
-     "days": 13
+     "sa": -14445,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "マイジャグラーV",
+     "sa": -15762,
+     "dai_days": 372,
+     "days": 14
     },
     {
      "model": "Lスマスロとある魔術の禁書目録",
@@ -1568,46 +1568,46 @@
      "days": 12
     },
     {
-     "model": "スロット ソードアート・オンラインⅡ",
-     "sa": -17616,
-     "dai_days": 312,
-     "days": 13
+     "model": "スマスロ モンスターハンターライズ",
+     "sa": -20538,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロ シャーマンキング",
-     "sa": -20562,
-     "dai_days": 39,
-     "days": 13
+     "sa": -21249,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "スマスロ モンスターハンターライズ",
-     "sa": -21072,
-     "dai_days": 39,
-     "days": 13
+     "model": "真打 吉宗",
+     "sa": -24570,
+     "dai_days": 98,
+     "days": 14
     },
     {
      "model": "L転生王女と天才令嬢の魔法革命",
-     "sa": -29154,
-     "dai_days": 54,
-     "days": 9
+     "sa": -39336,
+     "dai_days": 60,
+     "days": 10
     },
     {
      "model": "スマスロ モンスターハンターライズ:サンブレイク",
-     "sa": -47820,
-     "dai_days": 90,
-     "days": 9
+     "sa": -47900,
+     "dai_days": 100,
+     "days": 10
     },
     {
      "model": "Lパチスロ彼女、お借りします",
-     "sa": -79800,
-     "dai_days": 130,
-     "days": 13
+     "sa": -76120,
+     "dai_days": 140,
+     "days": 14
     },
     {
      "model": "スマスロ とある魔術の禁書目録2",
-     "sa": -84580,
-     "dai_days": 260,
-     "days": 13
+     "sa": -90300,
+     "dai_days": 280,
+     "days": 14
     }
    ]
   },
@@ -1880,44 +1880,50 @@
   {
    "hall": "stardust",
    "name": "門前仲町スターダスト",
-   "total": -440915,
-   "ndays": 13,
+   "total": -481273,
+   "ndays": 14,
    "models": [
     {
      "model": "スマスロ獣王",
-     "sa": 38275,
-     "dai_days": 45,
-     "days": 9
+     "sa": 37590,
+     "dai_days": 50,
+     "days": 10
     },
     {
      "model": "スマスロ モンスターハンターライズ:サンブレイク",
-     "sa": 22260,
-     "dai_days": 45,
-     "days": 9
+     "sa": 21190,
+     "dai_days": 50,
+     "days": 10
     },
     {
-     "model": "スマスロ ストリートファイター6",
-     "sa": 6052,
-     "dai_days": 52,
-     "days": 13
+     "model": "スマスロ北斗の拳 転生の章2",
+     "sa": 10894,
+     "dai_days": 120,
+     "days": 14
     },
     {
      "model": "ゴーゴージャグラー３",
-     "sa": 4182,
-     "dai_days": 78,
-     "days": 13
+     "sa": 4176,
+     "dai_days": 84,
+     "days": 14
     },
     {
      "model": "スマスロモンキーターンV",
-     "sa": 3715,
-     "dai_days": 65,
-     "days": 13
+     "sa": 4130,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "スマスロ ストリートファイター6",
+     "sa": 2980,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "スマスロ サンダーV",
-     "sa": 2508,
-     "dai_days": 26,
-     "days": 13
+     "sa": 2606,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スマスロ スーパーリオエース2",
@@ -1926,58 +1932,64 @@
      "days": 4
     },
     {
-     "model": "スマスロ北斗の拳 転生の章2",
-     "sa": 2070,
-     "dai_days": 112,
-     "days": 13
-    },
-    {
-     "model": "真打 吉宗",
-     "sa": 1865,
-     "dai_days": 65,
-     "days": 13
-    },
-    {
-     "model": "Lスマスロ北斗の拳",
-     "sa": -12,
-     "dai_days": 78,
-     "days": 13
-    },
-    {
      "model": "ミスタージャグラー",
-     "sa": -212,
-     "dai_days": 52,
-     "days": 13
+     "sa": 1004,
+     "dai_days": 56,
+     "days": 14
     },
     {
-     "model": "スマスロ ハナビ",
-     "sa": -2188,
-     "dai_days": 30,
-     "days": 13
-    },
-    {
-     "model": "ハッピージャグラーＶＩＩＩ",
-     "sa": -2865,
-     "dai_days": 39,
-     "days": 13
+     "model": "ネオアイムジャグラーEX",
+     "sa": -3220,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "ウルトラミラクルジャグラー",
-     "sa": -2940,
-     "dai_days": 52,
-     "days": 13
+     "sa": -3308,
+     "dai_days": 56,
+     "days": 14
     },
     {
-     "model": "Lパチスロ炎炎ノ消防隊2",
-     "sa": -7110,
-     "dai_days": 39,
-     "days": 13
+     "model": "真打 吉宗",
+     "sa": -3480,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "Lスマスロ北斗の拳",
+     "sa": -3540,
+     "dai_days": 84,
+     "days": 14
+    },
+    {
+     "model": "ハッピージャグラーＶＩＩＩ",
+     "sa": -3798,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "スマスロパリピ孔明",
+     "sa": -3892,
+     "dai_days": 20,
+     "days": 10
+    },
+    {
+     "model": "スマスロ ハナビ",
+     "sa": -3940,
+     "dai_days": 32,
+     "days": 14
     },
     {
      "model": "ファンキージャグラー２ＫＴ",
-     "sa": -7136,
-     "dai_days": 104,
-     "days": 13
+     "sa": -7264,
+     "dai_days": 112,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロ炎炎ノ消防隊2",
+     "sa": -7272,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "いざ！番長",
@@ -1986,120 +1998,108 @@
      "days": 4
     },
     {
-     "model": "スマスロパリピ孔明",
-     "sa": -7312,
-     "dai_days": 18,
-     "days": 9
-    },
-    {
-     "model": "ネオアイムジャグラーEX",
-     "sa": -7360,
-     "dai_days": 65,
-     "days": 13
-    },
-    {
-     "model": "ジャグラーガールズSS",
-     "sa": -12940,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "マイジャグラーV",
-     "sa": -13056,
-     "dai_days": 208,
-     "days": 13
-    },
-    {
      "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
-     "sa": -13868,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "スロット ワールドダイスター",
-     "sa": -15964,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
-     "sa": -17440,
-     "dai_days": 65,
-     "days": 13
+     "sa": -12242,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スマスロ とある魔術の禁書目録2",
-     "sa": -19295,
-     "dai_days": 65,
-     "days": 13
+     "sa": -13505,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "ジャグラーガールズSS",
+     "sa": -14616,
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
+     "sa": -17565,
+     "dai_days": 70,
+     "days": 14
+    },
+    {
+     "model": "マイジャグラーV",
+     "sa": -19600,
+     "dai_days": 224,
+     "days": 14
+    },
+    {
+     "model": "スロット ワールドダイスター",
+     "sa": -22544,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スマスロ やじきた道中記参る！",
-     "sa": -19695,
-     "dai_days": 39,
-     "days": 13
+     "sa": -24171,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "Lパチスロからくりサーカス2",
-     "sa": -25884,
-     "dai_days": 60,
-     "days": 13
-    },
-    {
-     "model": "スマスロ リコリス・リコイル",
-     "sa": -36648,
-     "dai_days": 104,
-     "days": 13
+     "sa": -28508,
+     "dai_days": 64,
+     "days": 14
     },
     {
      "model": "L東京喰種",
-     "sa": -38892,
-     "dai_days": 91,
-     "days": 13
+     "sa": -36813,
+     "dai_days": 98,
+     "days": 14
+    },
+    {
+     "model": "スマスロ リコリス・リコイル",
+     "sa": -37304,
+     "dai_days": 112,
+     "days": 14
     },
     {
      "model": "L戦国乙女5 業火を穿つ宿焔の双刃",
-     "sa": -41850,
-     "dai_days": 78,
-     "days": 13
+     "sa": -47418,
+     "dai_days": 84,
+     "days": 14
     },
     {
      "model": "Lパチスロ彼女、お借りします",
-     "sa": -45050,
-     "dai_days": 65,
-     "days": 13
+     "sa": -47830,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "スマスロ ミリオンゴッド-神々の軌跡-",
-     "sa": -53389,
-     "dai_days": 91,
-     "days": 13
+     "sa": -65002,
+     "dai_days": 98,
+     "days": 14
     },
     {
      "model": "スロット ソードアート・オンラインⅡ",
-     "sa": -125720,
-     "dai_days": 65,
-     "days": 13
+     "sa": -133995,
+     "dai_days": 70,
+     "days": 14
     }
    ]
   },
   {
    "hall": "bigapple",
    "name": "ビッグアップル秋葉原",
-   "total": -1394,
-   "ndays": 13,
+   "total": -1487,
+   "ndays": 14,
    "models": [
     {
-     "model": "Lソードアート・オンライン",
-     "sa": 10,
-     "dai_days": 65,
-     "days": 13
+     "model": "アレックス ブライト",
+     "sa": 6,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "アレックス ブライト",
-     "sa": 9,
-     "dai_days": 39,
-     "days": 13
+     "model": "Lソードアート・オンライン",
+     "sa": 5,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "L虚構推理",
@@ -2110,8 +2110,8 @@
     {
      "model": "スマスロ タコスロ",
      "sa": 2,
-     "dai_days": 30,
-     "days": 13
+     "dai_days": 32,
+     "days": 14
     },
     {
      "model": "スマスロ ストリートファイター6",
@@ -2120,100 +2120,100 @@
      "days": 4
     },
     {
-     "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
-     "sa": 0,
-     "dai_days": 234,
-     "days": 13
+     "model": "A-SLOT+ この素晴らしい世界に祝福を！",
+     "sa": 2,
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "A-SLOT+異世界かるてっとBT",
+     "model": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
      "sa": 0,
-     "dai_days": 56,
-     "days": 13
+     "dai_days": 252,
+     "days": 14
     },
     {
      "model": "ネオアイムジャグラーEX",
      "sa": 0,
-     "dai_days": 39,
-     "days": 13
-    },
-    {
-     "model": "A-SLOT+ この素晴らしい世界に祝福を！",
-     "sa": 0,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "スマスロケロット5BT",
      "sa": 0,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロパリピ孔明",
+     "model": "翔べ！ハーレムエース",
      "sa": 0,
-     "dai_days": 18,
-     "days": 9
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "スマート沖スロ ダークハイビ",
+     "sa": 0,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "スマスロ獣王",
+     "sa": 0,
+     "dai_days": 50,
+     "days": 10
+    },
+    {
+     "model": "マイジャグラーVI",
+     "sa": 0,
+     "dai_days": 8,
+     "days": 2
     },
     {
      "model": "Lスマスロ北斗の拳",
      "sa": -2,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "翔べ！ハーレムエース",
+     "model": "スマスロパリピ孔明",
      "sa": -2,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "スマート沖スロ ダークハイビ",
-     "sa": -2,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "Lラブ嬢3～Wご指名はいかがですか?～",
-     "sa": -3,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 20,
+     "days": 10
     },
     {
      "model": "Lパチスロガールズ＆パンツァー 最終章",
      "sa": -3,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "この素晴らしい世界に祝福を！",
      "sa": -3,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "A-SLOT+異世界かるてっとBT",
+     "sa": -4,
+     "dai_days": 60,
+     "days": 14
     },
     {
      "model": "L戦国乙女４　戦乱に閃く炯眼の軍師",
      "sa": -4,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "L無職転生～異世界行ったら本気だす～",
      "sa": -4,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スロット ゾンビランドサガ",
      "sa": -4,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "マイジャグラーVI",
-     "sa": -4,
-     "dai_days": 4,
-     "days": 1
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "Lパチスロ革命機ヴァルヴレイヴ2",
@@ -2222,328 +2222,328 @@
      "days": 4
     },
     {
-     "model": "スマスロ獣王",
-     "sa": -5,
-     "dai_days": 45,
-     "days": 9
+     "model": "Lラブ嬢3～Wご指名はいかがですか?～",
+     "sa": -6,
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "ミスタージャグラー",
+     "model": "ゴーゴージャグラー３",
      "sa": -8,
-     "dai_days": 52,
-     "days": 13
-    },
-    {
-     "model": "L D4DJ Pachi-Slot Mix",
-     "sa": -8,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "L転生王女と天才令嬢の魔法革命",
      "sa": -8,
-     "dai_days": 18,
-     "days": 9
+     "dai_days": 20,
+     "days": 10
     },
     {
      "model": "アニマルスロット ドッチ",
      "sa": -9,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "Lアズールレーン THE ANIMATION",
      "sa": -10,
-     "dai_days": 61,
-     "days": 13
+     "dai_days": 66,
+     "days": 14
+    },
+    {
+     "model": "L D4DJ Pachi-Slot Mix",
+     "sa": -10,
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "パチスロ見える子ちゃん",
      "sa": -10,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "回胴式遊技機グランベルム",
+     "model": "クレアの秘宝伝～はじまりの扉と太陽の石～ボーナストリガーver.",
      "sa": -10,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "交響詩篇エウレカセブン HI-EVOLUTION ZERO TYPE-ART",
-     "sa": -10,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "ゴーゴージャグラー３",
-     "sa": -10,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スマスロ モンスターハンターライズ:サンブレイク",
      "sa": -10,
-     "dai_days": 90,
-     "days": 9
+     "dai_days": 100,
+     "days": 10
+    },
+    {
+     "model": "ミスタージャグラー",
+     "sa": -12,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "スマスロ とんでもスキルで異世界放浪メシ",
      "sa": -12,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 42,
+     "days": 14
     },
     {
-     "model": "Lマジカルハロウィン8",
+     "model": "回胴式遊技機グランベルム",
      "sa": -12,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "クレアの秘宝伝～はじまりの扉と太陽の石～ボーナストリガーver.",
+     "model": "交響詩篇エウレカセブン HI-EVOLUTION ZERO TYPE-ART",
      "sa": -12,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "スマート沖スロ ニューキングハナハナV",
      "sa": -12,
-     "dai_days": 26,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
-     "model": "スマスロ やじきた道中記参る！",
-     "sa": -14,
-     "dai_days": 47,
-     "days": 13
+     "model": "スマスロ スーパーブラックジャック",
+     "sa": -12,
+     "dai_days": 20,
+     "days": 10
     },
     {
      "model": "Lタクトオーパス デスティニー",
      "sa": -14,
-     "dai_days": 47,
-     "days": 13
-    },
-    {
-     "model": "L南国育ち SPECIAL",
-     "sa": -14,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "スマスロ スーパーブラックジャック",
-     "sa": -14,
-     "dai_days": 18,
-     "days": 9
+     "dai_days": 50,
+     "days": 14
     },
     {
      "model": "SHAKE BONUS TRIGGER",
      "sa": -15,
-     "dai_days": 65,
-     "days": 13
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "Lひぐらしのなく頃に業",
      "sa": -15,
-     "dai_days": 65,
-     "days": 13
+     "dai_days": 70,
+     "days": 14
     },
     {
-     "model": "A-SLOT+ ディスクアップ ULTRAREMIX",
-     "sa": -16,
-     "dai_days": 26,
-     "days": 13
-    },
-    {
-     "model": "スマスロBIRDIE WING-Golf Girls’ Story-",
-     "sa": -17,
-     "dai_days": 38,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロ彼女、お借りします",
-     "sa": -18,
-     "dai_days": 39,
-     "days": 13
+     "model": "Lマジカルハロウィン8",
+     "sa": -15,
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "ウルトラミラクルジャグラー",
+     "sa": -15,
+     "dai_days": 42,
+     "days": 14
+    },
+    {
+     "model": "L南国育ち SPECIAL",
+     "sa": -16,
+     "dai_days": 28,
+     "days": 14
+    },
+    {
+     "model": "スマスロ やじきた道中記参る！",
+     "sa": -17,
+     "dai_days": 50,
+     "days": 14
+    },
+    {
+     "model": "A-SLOT+ ディスクアップ ULTRAREMIX",
      "sa": -18,
-     "dai_days": 39,
-     "days": 13
+     "dai_days": 28,
+     "days": 14
     },
     {
      "model": "L東京喰種",
      "sa": -19,
-     "dai_days": 231,
-     "days": 13
+     "dai_days": 250,
+     "days": 14
     },
     {
-     "model": "真打 吉宗",
-     "sa": -20,
-     "dai_days": 52,
-     "days": 13
+     "model": "スマスロBIRDIE WING-Golf Girls’ Story-",
+     "sa": -19,
+     "dai_days": 40,
+     "days": 14
     },
     {
-     "model": "L邪神ちゃんドロップキック",
+     "model": "Lパチスロ彼女、お借りします",
      "sa": -21,
-     "dai_days": 81,
-     "days": 13
+     "dai_days": 42,
+     "days": 14
     },
     {
      "model": "パチスロ戦国恋姫",
      "sa": -24,
-     "dai_days": 156,
-     "days": 13
+     "dai_days": 168,
+     "days": 14
     },
     {
      "model": "スマスロ痛いのは嫌なので防御力に極振りしたいと思います。",
      "sa": -24,
-     "dai_days": 52,
-     "days": 13
+     "dai_days": 56,
+     "days": 14
+    },
+    {
+     "model": "真打 吉宗",
+     "sa": -24,
+     "dai_days": 56,
+     "days": 14
     },
     {
      "model": "スマスロ スーパーリオエース2",
      "sa": -25,
-     "dai_days": 47,
-     "days": 13
+     "dai_days": 50,
+     "days": 14
     },
     {
      "model": "スマスロ ハナビ",
      "sa": -25,
-     "dai_days": 65,
-     "days": 13
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "L ToLOVEるダークネス TRANCE ver.8.7",
      "sa": -27,
-     "dai_days": 117,
-     "days": 13
+     "dai_days": 126,
+     "days": 14
     },
     {
      "model": "スマスロ リコリス・リコイル",
      "sa": -28,
-     "dai_days": 364,
-     "days": 13
+     "dai_days": 392,
+     "days": 14
     },
     {
      "model": "戦国コレクション6",
      "sa": -28,
-     "dai_days": 182,
-     "days": 13
-    },
-    {
-     "model": "Lパチスロからくりサーカス2",
-     "sa": -28,
-     "dai_days": 99,
-     "days": 13
+     "dai_days": 196,
+     "days": 14
     },
     {
      "model": "Lパチスロ喰霊-零-Re",
      "sa": -28,
-     "dai_days": 91,
-     "days": 13
+     "dai_days": 98,
+     "days": 14
     },
     {
      "model": "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝",
      "sa": -30,
-     "dai_days": 390,
-     "days": 13
+     "dai_days": 420,
+     "days": 14
     },
     {
      "model": "Lパチスロ炎炎ノ消防隊2",
      "sa": -30,
-     "dai_days": 78,
-     "days": 13
+     "dai_days": 84,
+     "days": 14
     },
     {
-     "model": "スマスロ サンダーV",
+     "model": "L邪神ちゃんドロップキック",
      "sa": -30,
-     "dai_days": 65,
-     "days": 13
+     "dai_days": 90,
+     "days": 14
+    },
+    {
+     "model": "Lパチスロからくりサーカス2",
+     "sa": -35,
+     "dai_days": 106,
+     "days": 14
     },
     {
      "model": "プリズムナナ",
      "sa": -35,
-     "dai_days": 91,
-     "days": 13
+     "dai_days": 98,
+     "days": 14
+    },
+    {
+     "model": "スマスロ サンダーV",
+     "sa": -35,
+     "dai_days": 70,
+     "days": 14
     },
     {
      "model": "Lパチスロうみねこのなく頃に2",
      "sa": -36,
-     "dai_days": 156,
-     "days": 13
+     "dai_days": 168,
+     "days": 14
     },
     {
      "model": "Lバンドリ！",
      "sa": -36,
-     "dai_days": 156,
-     "days": 13
-    },
-    {
-     "model": "スマスロ化物語",
-     "sa": -36,
-     "dai_days": 66,
-     "days": 13
-    },
-    {
-     "model": "スマスロ 攻殻機動隊",
-     "sa": -38,
-     "dai_days": 81,
-     "days": 13
-    },
-    {
-     "model": "スマスロ ミリオンゴッド-神々の軌跡-",
-     "sa": -39,
-     "dai_days": 73,
-     "days": 13
+     "dai_days": 168,
+     "days": 14
     },
     {
      "model": "スロット ワールドダイスター",
      "sa": -40,
-     "dai_days": 104,
-     "days": 13
+     "dai_days": 112,
+     "days": 14
     },
     {
      "model": "スマスロ 甲鉄城のカバネリ 海門決戦",
      "sa": -42,
-     "dai_days": 273,
-     "days": 13
+     "dai_days": 294,
+     "days": 14
     },
     {
-     "model": "スマスロモンキーターンV",
-     "sa": -46,
-     "dai_days": 121,
-     "days": 13
+     "model": "スマスロ化物語",
+     "sa": -42,
+     "dai_days": 72,
+     "days": 14
+    },
+    {
+     "model": "スマスロ 攻殻機動隊",
+     "sa": -43,
+     "dai_days": 86,
+     "days": 14
+    },
+    {
+     "model": "スマスロ ミリオンゴッド-神々の軌跡-",
+     "sa": -44,
+     "dai_days": 78,
+     "days": 14
     },
     {
      "model": "スロット ソードアート・オンラインⅡ",
      "sa": -54,
-     "dai_days": 234,
-     "days": 13
+     "dai_days": 252,
+     "days": 14
+    },
+    {
+     "model": "スマスロモンキーターンV",
+     "sa": -55,
+     "dai_days": 130,
+     "days": 14
     },
     {
      "model": "マイジャグラーV",
      "sa": -60,
-     "dai_days": 152,
-     "days": 13
-    },
-    {
-     "model": "L少女☆歌劇 レヴュースタァライト -The SLOT-",
-     "sa": -60,
-     "dai_days": 130,
-     "days": 13
+     "dai_days": 160,
+     "days": 14
     },
     {
      "model": "L戦国乙女5 業火を穿つ宿焔の双刃",
      "sa": -70,
-     "dai_days": 455,
-     "days": 13
+     "dai_days": 490,
+     "days": 14
+    },
+    {
+     "model": "L少女☆歌劇 レヴュースタァライト -The SLOT-",
+     "sa": -70,
+     "dai_days": 140,
+     "days": 14
     },
     {
      "model": "スマスロ とある魔術の禁書目録2",
-     "sa": -105,
-     "dai_days": 195,
-     "days": 13
+     "sa": -120,
+     "dai_days": 210,
+     "days": 14
     }
    ]
   }
