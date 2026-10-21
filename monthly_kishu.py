@@ -11,7 +11,8 @@ DATA_DIR=os.path.join(os.path.dirname(os.path.abspath(__file__)),"data")
 HALLS={"shinkan":"エスパス上野新館","honkan":"エスパス上野本館",
        "island_akiba":"アイランド秋葉原","espace_akiba":"エスパス秋葉原駅前",
        "bigdipper":"BIGディッパー門前仲町","stardust":"門前仲町スターダスト",
-       "bigapple":"ビッグアップル秋葉原"}  # bigappleはアナスロ由来の機種別TOP20(優秀機種)
+       "bigapple":"ビッグアップル秋葉原",  # bigappleはアナスロ由来の機種別TOP20(優秀機種)
+       "bigdipper_kiba":"BIGディッパー木場"}
 
 def ni(s):
     try:return int(float(str(s).replace(",","")))

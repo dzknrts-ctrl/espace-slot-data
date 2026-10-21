@@ -33,6 +33,9 @@ def events_for(hall, d):
     elif hall=="bigapple":
         # 旧イベ(アナスロ/スロマップ記載): 7のつく日・ゾロ目。未検証のためnormal。
         if dd%10==7 or dd in (11,22): ev.append(("旧イベ(7/ゾロ目)",'normal'))
+    elif hall=="bigdipper_kiba":
+        # BIGディッパー系(旧イベ=ゾロ目)。未検証のためnormal。
+        if dd in (11,22): ev.append(("旧イベ(ゾロ目)",'normal'))
     return ev
 
 def event_label(hall, d):
