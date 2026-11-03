@@ -1758,19 +1758,19 @@
    "ndays": 2,
    "models": [
     {
-     "model": "Ｌゴジラ対エヴァンゲリオン2S",
+     "model": "Lパチスロ ゴジラ対エヴァンゲリオン2",
      "sa": 20995,
      "dai_days": 5,
      "days": 1
     },
     {
-     "model": "Ｌ／Vivy／A5",
+     "model": "スロットVivy‐Fluorite Eye’s Song‐",
      "sa": 11205,
      "dai_days": 3,
      "days": 1
     },
     {
-     "model": "Ｌガンゲイル・オンラインMD",
+     "model": "Lソードアート・オンライン オルタナティブ ガンゲイル・オンライン",
      "sa": 7126,
      "dai_days": 2,
      "days": 1
@@ -1854,7 +1854,7 @@
      "days": 2
     },
     {
-     "model": "ＬラグナドールZI",
+     "model": "スマスロ ラグナドール",
      "sa": -1966,
      "dai_days": 2,
      "days": 1
@@ -1956,7 +1956,7 @@
      "days": 2
     },
     {
-     "model": "Ｌ聖闘士星矢黄金十二宮TG",
+     "model": "L聖闘士星矢 黄金十二宮",
      "sa": -8605,
      "dai_days": 5,
      "days": 1
