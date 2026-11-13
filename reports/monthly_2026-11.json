@@ -1060,7 +1060,7 @@
   {
    "hall": "espace_akiba",
    "name": "エスパス秋葉原駅前",
-   "total": 652484,
+   "total": 658564,
    "ndays": 12,
    "models": [
     {
@@ -1250,6 +1250,12 @@
      "days": 12
     },
     {
+     "model": "スロット Re:ゼロから始める異世界生活 season2",
+     "sa": 5542,
+     "dai_days": 22,
+     "days": 11
+    },
+    {
      "model": "この素晴らしい世界に祝福を！",
      "sa": 5508,
      "dai_days": 48,
@@ -1332,12 +1338,6 @@
      "sa": 226,
      "dai_days": 8,
      "days": 4
-    },
-    {
-     "model": "スロット Re:ゼロから始める異世界生活 season2",
-     "sa": -538,
-     "dai_days": 24,
-     "days": 12
     },
     {
      "model": "スマスロパリピ孔明",
